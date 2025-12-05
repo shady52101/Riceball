@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Okinawa Trip Planner</title>
+
+  <!-- PWA：安裝到主畫面用 -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#e91e63" />
+
+  <!-- iOS Add to Home Screen 支援 -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Okinawa Trip" />
+
+  <style>
+    :root {
+      --primary: #e91e63;
+      --primary-light: #f8bbd0;
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text-main: #212121;
+      --text-sub: #757575;
+      --radius-xl: 18px;
+      --shadow-soft: 0 8px 16px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+    }
+
+    .app {
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+    }
+
+    header {
+      padding: 16px 20px 12px;
+      background: linear-gradient(135deg, #ec407a, #ff80ab);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    header .subtitle {
+      font-size: 13px;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .day-tabs {
+      display: flex;
+      gap: 8px;
+      padding: 8px 12px 12px;
+      background: linear-gradient(135deg, #ec407a, #ff80ab);
+      position: sticky;
+      top: 60px;
+      z-index: 9;
+    }
+
+    .day-tab {
+      flex: 1;
+      padding: 8px 0;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(255,255,255,0.25);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    .day-tab.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    main {
+      flex: 1;
+      padding: 12px;
+      padding-bottom: 70px; /* 給底部導航留空間 */
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .time {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+
+    .title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .category-chip {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-top: 6px;
+      line-height: 1.5;
+      white-space: pre-line;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .btn-link {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(233,30,99,0.1);
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    .btn-link:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    .empty {
+      text-align: center;
+      color: var(--text-sub);
+      margin-top: 40px;
+      font-size: 14px;
+    }
+
+    .bottom-nav {
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 480px;
+      margin: 0 auto;
+      background: #ffffff;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.12);
+      display: flex;
+      justify-content: space-around;
+      padding: 6px 4px 6px;
+      z-index: 20;
+    }
+
+    .bottom-item {
+      flex: 1;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .bottom-item span {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 2px;
+    }
+
+    .bottom-item.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    @media (min-width: 768px) {
+      header { border-radius: 0 0 18px 18px; }
+      .day-tabs { top: 68px; }
+      .bottom-nav { border-radius: 18px 18px 0 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Okinawa Trip</h1>
+      <div class="subtitle">沖繩行程小幫手 · 點下面切換天數</div>
+    </header>
+
+    <div class="day-tabs" id="dayTabs">
+      <!-- JS 會自動填 D1 / D2 / D3 -->
+    </div>
+
+    <main>
+      <div id="cardContainer"></div>
+      <div class="empty" id="emptyState" style="display:none;">這一天還沒有安排行程</div>
+    </main>
+
+    <nav class="bottom-nav">
+      <div class="bottom-item active" id="nav-plan">
+        <span>🗓️</span>行程
+      </div>
+      <div class="bottom-item" id="nav-info">
+        <span>ℹ️</span>說明
+      </div>
+      <div class="bottom-item" id="nav-settings">
+        <span>⭐</span>小提醒
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    // ====== 1. 行程資料（可以自己再補完整） ======
+    const schedule = [
+      // Day 1
+      {
+        day: "D1",
+        label: "D1 · 1/9",
+        time: "13:25–15:55（2小時30分）",
+        title: "桃園機場 T1 → 那霸機場",
+        category: "交通",
+        note: "AirAsia FD230\n國際線4F 或 國內線1F 有豬肉蛋飯糰可以先墊肚子。",
+        cost: "機票：約 18,262 NTD（來回）",
+        link: "https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/"
+      },
+      {
+        day: "D1",
+        label: "D1 · 1/9",
+        time: "19:05–19:25（20分）",
+        title: "飯店 check in",
+        category: "飯店 / 休息",
+        note: "Sunset Beach Hotel\n辦理入住、放行李。",
+        cost: "約 NTD 4,420",
+        link: "https://www.booking.com/"
+      },
+      {
+        day: "D1",
+        label: "D1 · 1/9",
+        time: "19:25–21:25（2小時）",
+        title: "美國村逛街＋晚餐",
+        category: "用餐",
+        note: "逛街＋晚餐。\n建議：浜屋そば（適合小孩）、A&W 美式餐廳（親子友善）。",
+        cost: "",
+        link: "https://www.jathao.com/2015/10/aeon.html"
+      },
+
+      // Day 2
+      {
+        day: "D2",
+        label: "D2 · 1/10",
+        time: "08:00–09:00（1小時）",
+        title: "飯店早餐",
+        category: "用餐",
+        note: "飯店內用早餐，時間彈性。",
+        cost: "",
+        link: ""
+      },
+      {
+        day: "D2",
+        label: "D2 · 1/10",
+        time: "09:30–12:30（3小時）",
+        title: "沖繩兒童王國",
+        category: "景點",
+        note: "動物園＋遊樂設施，小孩放電行程。\n可以視狀況中途休息、看動物。",
+        cost: "成人 1000円，小孩 free",
+        link: "https://www.okzm.jp/information-cht/"
+      },
+      {
+        day: "D2",
+        label: "D2 · 1/10",
+        time: "17:10–19:40（2小時30分）",
+        title: "東南植物樂園（夜間燈飾）",
+        category: "景點",
+        note: "賞燈、散步行程。\n視小孩精神調整停留時間。",
+        cost: "",
+        link: "https://www.southeast-botanical.jp/tw/illumination/"
+      },
+
+      // Day 3
+      {
+        day: "D3",
+        label: "D3 · 1/11",
+        time: "10:20–13:20（3小時）",
+        title: "沖繩世界（玉泉洞）",
+        category: "景點",
+        note: "洞窟＋園區＋表演，可搭配中午用餐。\n有階梯與坡道，注意娃娃車與小孩體力。",
+        cost: "",
+        link: "https://www.gyokusendo.co.jp/okinawaworld/"
+      },
+      {
+        day: "D3",
+        label: "D3 · 1/11",
+        time: "18:50–20:50（2小時）",
+        title: "國際通逛街＋晚餐",
+        category: "用餐",
+        note: "最後採買＋晚餐時間，視小孩狀況提早回飯店休息。",
+        cost: "",
+        link: ""
+      }
+    ];
+
+    // 取得所有天數（D1, D2, D3）
+    const days = Array.from(new Set(schedule.map(item => item.day)));
+
+    const dayTabsEl = document.getElementById("dayTabs");
+    const cardContainer = document.getElementById("cardContainer");
+    const emptyState = document.getElementById("emptyState");
+
+    let currentDay = days[0] || "D1";
+
+    function renderDayTabs() {
+      dayTabsEl.innerHTML = "";
+      days.forEach(day => {
+        const btn = document.createElement("button");
+        btn.className = "day-tab" + (day === currentDay ? " active" : "");
+        const label = schedule.find(i => i.day === day)?.label || day;
+        btn.textContent = label;
+        btn.addEventListener("click", () => {
+          currentDay = day;
+          renderDayTabs();
+          renderCards();
+        });
+        dayTabsEl.appendChild(btn);
+      });
+    }
+
+    function renderCards() {
+      const items = schedule.filter(item => item.day === currentDay);
+      cardContainer.innerHTML = "";
+
+      if (!items.length) {
+        emptyState.style.display = "block";
+        return;
+      }
+      emptyState.style.display = "none";
+
+      items.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const header = document.createElement("div");
+        header.className = "card-header";
+
+        const left = document.createElement("div");
+        const time = document.createElement("div");
+        time.className = "time";
+        time.textContent = item.time;
+
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = item.title;
+
+        left.appendChild(time);
+        left.appendChild(title);
+
+        const chip = document.createElement("div");
+        chip.className = "category-chip";
+        chip.textContent = item.category || "行程";
+
+        header.appendChild(left);
+        header.appendChild(chip);
+
+        const note = document.createElement("div");
+        note.className = "note";
+        note.textContent = item.note || "";
+
+        const footer = document.createElement("div");
+        footer.className = "card-footer";
+
+        const cost = document.createElement("div");
+        cost.textContent = item.cost || "";
+
+        const btn = document.createElement("button");
+        btn.className = "btn-link";
+        if (item.link) {
+          btn.textContent = "查看連結";
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            window.open(item.link, "_blank");
+          });
+        } else {
+          btn.textContent = "無連結";
+          btn.disabled = true;
+        }
+
+        footer.appendChild(cost);
+        footer.appendChild(btn);
+
+        card.appendChild(header);
+        card.appendChild(note);
+        card.appendChild(footer);
+
+        cardContainer.appendChild(card);
+      });
+    }
+
+    // 底部 nav 簡單切換（目前只有行程在用）
+    document.getElementById("nav-plan").addEventListener("click", () => {
+      document.getElementById("nav-plan").classList.add("active");
+      document.getElementById("nav-info").classList.remove("active");
+      document.getElementById("nav-settings").classList.remove("active");
+      cardContainer.style.display = "block";
+      emptyState.style.display = schedule.some(i => i.day === currentDay) ? "none" : "block";
+    });
+
+    document.getElementById("nav-info").addEventListener("click", () => {
+      document.getElementById("nav-plan").classList.remove("active");
+      document.getElementById("nav-info").classList.add("active");
+      document.getElementById("nav-settings").classList.remove("active");
+
+      cardContainer.innerHTML =
+        `<div class="card">
+          <div class="title">使用說明</div>
+          <div class="note">
+          ・下方「行程」頁：依天數顯示當天安排。\n
+          ・上方粉色按鈕：切換 D1 / D2 / D3。\n
+          ・卡片中的「查看連結」會開啟餐廳或景點官網。\n
+          ・可以在手機瀏覽器選「加入主畫面」，變成像 APP 一樣使用。
+          </div>
+        </div>`;
+      emptyState.style.display = "none";
+    });
+
+    document.getElementById("nav-settings").addEventListener("click", () => {
+      document.getElementById("nav-plan").classList.remove("active");
+      document.getElementById("nav-info").classList.remove("active");
+      document.getElementById("nav-settings").classList.add("active");
+
+      cardContainer.innerHTML =
+        `<div class="card">
+          <div class="title">小提醒</div>
+          <div class="note">
+          ・帶小孩：預留午睡與臨時休息時間，不要把行程排滿。\n
+          ・下雨備案：美國村 / 國際通 / 購物中心可以當備用行程。\n
+          ・可以自己打開 index.html，把上面的 schedule 陣列加更多行程。
+          </div>
+        </div>`;
+      emptyState.style.display = "none";
+    });
+
+    // 初始化
+    renderDayTabs();
+    renderCards();
+
+    // ====== 2. 註冊 Service Worker（PWA 離線 / 安裝用） ======
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js").catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
