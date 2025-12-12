@@ -5,25 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Okinawa Trip Planner</title>
 
-  <!-- PWA：安裝到主畫面用 -->
   <link rel="manifest" href="manifest.webmanifest" />
-  <meta name="theme-color" content="#e91e63" />
+  <meta name="theme-color" content="#f06292" />
 
-  <!-- iOS Add to Home Screen 支援 -->
+  <!-- iOS PWA -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Okinawa Trip" />
 
   <style>
     :root {
-      --primary: #e91e63;
-      --primary-light: #f8bbd0;
-      --bg: #f5f5f5;
+      --primary: #ec407a;
+      --primary-dark: #d81b60;
+      --primary-light: #f48fb1;
+      --bg: #fef4f8;
       --card-bg: #ffffff;
       --text-main: #212121;
       --text-sub: #757575;
       --radius-xl: 18px;
-      --shadow-soft: 0 8px 16px rgba(0,0,0,0.08);
+      --shadow-soft: 0 10px 24px rgba(233, 30, 99, 0.18);
     }
 
     * { box-sizing: border-box; }
@@ -31,7 +31,7 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      background: radial-gradient(circle at top left, #ffe3f0 0, #fef4f8 45%, #ffffff 100%);
       color: var(--text-main);
     }
 
@@ -41,38 +41,47 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background: var(--bg);
     }
 
     header {
-      padding: 16px 20px 12px;
+      padding: 18px 20px 14px;
       background: linear-gradient(135deg, #ec407a, #ff80ab);
       color: white;
       position: sticky;
       top: 0;
       z-index: 10;
+      box-shadow: 0 6px 18px rgba(233, 30, 99, 0.35);
+      border-radius: 0 0 24px 24px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
     }
 
     header .subtitle {
       font-size: 13px;
-      opacity: 0.9;
+      opacity: 0.92;
       margin-top: 4px;
+    }
+
+    .day-tabs-wrap {
+      padding: 10px 16px 4px;
+      position: sticky;
+      top: 72px;
+      z-index: 9;
     }
 
     .day-tabs {
       display: flex;
       gap: 8px;
-      padding: 8px 12px 12px;
-      background: linear-gradient(135deg, #ec407a, #ff80ab);
-      position: sticky;
-      top: 60px;
-      z-index: 9;
+      background: rgba(255,255,255,0.9);
+      padding: 6px;
+      border-radius: 999px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
     }
 
     .day-tab {
@@ -80,69 +89,135 @@
       padding: 8px 0;
       border-radius: 999px;
       border: 0;
-      background: rgba(255,255,255,0.25);
-      color: white;
-      font-size: 13px;
+      background: transparent;
+      color: var(--primary-dark);
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
-      backdrop-filter: blur(6px);
+      white-space: nowrap;
+    }
+
+    .day-tab span {
+      display: block;
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .day-tab strong {
+      display: block;
+      font-size: 13px;
     }
 
     .day-tab.active {
-      background: #ffffff;
-      color: var(--primary);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #ec407a, #ff80ab);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.55);
     }
 
     main {
       flex: 1;
-      padding: 12px;
-      padding-bottom: 70px; /* 給底部導航留空間 */
+      padding: 16px 14px 32px;
+    }
+
+    .day-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 4px 4px 10px;
+      color: var(--text-sub);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .day-title span {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    .timeline {
+      position: relative;
+      margin-left: 10px;
+      padding-left: 12px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(236,64,122,0.1), rgba(236,64,122,0.35));
     }
 
     .card {
       background: var(--card-bg);
       border-radius: var(--radius-xl);
       padding: 12px 14px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: -40px;
+      top: -40px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, rgba(236,64,122,0.18), transparent 65%);
+      opacity: 0.7;
+    }
+
+    .dot {
+      position: absolute;
+      left: -18px;
+      top: 16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      background: var(--primary);
+      box-shadow: 0 0 0 4px rgba(236,64,122,0.25);
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 8px;
-      cursor: pointer;
+      gap: 10px;
     }
 
     .time {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-sub);
       margin-bottom: 4px;
     }
 
     .title {
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 2px;
     }
 
     .category-chip {
       font-size: 11px;
-      padding: 2px 8px;
+      padding: 4px 10px;
       border-radius: 999px;
-      background: var(--primary-light);
-      color: var(--primary);
+      background: rgba(236,64,122,0.06);
+      color: var(--primary-dark);
+      border: 1px solid rgba(236,64,122,0.25);
+      margin-top: 2px;
       white-space: nowrap;
     }
 
     .note {
       font-size: 13px;
       color: var(--text-sub);
-      margin-top: 6px;
+      margin-top: 8px;
       line-height: 1.5;
       white-space: pre-line;
     }
@@ -154,21 +229,31 @@
       margin-top: 8px;
       font-size: 12px;
       color: var(--text-sub);
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cost {
+      font-weight: 500;
     }
 
     .btn-link {
       font-size: 12px;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 999px;
       border: 0;
-      background: rgba(233,30,99,0.1);
-      color: var(--primary);
+      background: linear-gradient(135deg, #ec407a, #ff80ab);
+      color: #ffffff;
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(233,30,99,0.45);
     }
 
     .btn-link:disabled {
       opacity: 0.4;
+      box-shadow: none;
       cursor: default;
+      background: #e0e0e0;
+      color: #757575;
     }
 
     .empty {
@@ -177,89 +262,57 @@
       margin-top: 40px;
       font-size: 14px;
     }
-
-    .bottom-nav {
-      position: sticky;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      max-width: 480px;
-      margin: 0 auto;
-      background: #ffffff;
-      box-shadow: 0 -4px 12px rgba(0,0,0,0.12);
-      display: flex;
-      justify-content: space-around;
-      padding: 6px 4px 6px;
-      z-index: 20;
-    }
-
-    .bottom-item {
-      flex: 1;
-      text-align: center;
-      font-size: 11px;
-      color: var(--text-sub);
-    }
-
-    .bottom-item span {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 2px;
-    }
-
-    .bottom-item.active {
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    @media (min-width: 768px) {
-      header { border-radius: 0 0 18px 18px; }
-      .day-tabs { top: 68px; }
-      .bottom-nav { border-radius: 18px 18px 0 0; }
-    }
   </style>
 </head>
 <body>
   <div class="app">
     <header>
       <h1>Okinawa Trip</h1>
-      <div class="subtitle">沖繩行程小幫手 · 點下面切換天數</div>
+      <div class="subtitle">四天親子行程 · 點上方切換日期</div>
     </header>
 
-    <div class="day-tabs" id="dayTabs">
-      <!-- JS 會自動填 D1 / D2 / D3 -->
+    <div class="day-tabs-wrap">
+      <div class="day-tabs" id="dayTabs"></div>
     </div>
 
     <main>
-      <div id="cardContainer"></div>
+      <div class="day-title" id="dayTitle"></div>
+      <div class="timeline" id="cardContainer"></div>
       <div class="empty" id="emptyState" style="display:none;">這一天還沒有安排行程</div>
     </main>
-
-    <nav class="bottom-nav">
-      <div class="bottom-item active" id="nav-plan">
-        <span>🗓️</span>行程
-      </div>
-      <div class="bottom-item" id="nav-info">
-        <span>ℹ️</span>說明
-      </div>
-      <div class="bottom-item" id="nav-settings">
-        <span>⭐</span>小提醒
-      </div>
-    </nav>
   </div>
 
   <script>
-    // ====== 1. 行程資料（可以自己再補完整） ======
-    const schedule = [
-      // Day 1
+const schedule = [
       {
         day: "D1",
         label: "D1 · 1/9",
         time: "13:25–15:55（2小時30分）",
-        title: "桃園機場 T1 → 那霸機場",
+        title: "桃機T1 -> 那霸機場",
         category: "交通",
-        note: "AirAsia FD230\n國際線4F 或 國內線1F 有豬肉蛋飯糰可以先墊肚子。",
-        cost: "機票：約 18,262 NTD（來回）",
-        link: "https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/"
+        note: "AirAsia FD230 / \n國際線4F或是國內線1F有豬肉蛋飯糰",
+        cost: "18262 NTD (來回)",
+        link: "https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/\nhttps://hanblog.tw/porktamago/",
+      },
+      {
+        day: "D1",
+        label: "D1 · 1/9",
+        time: "15:55–17:55（2小時）",
+        title: "那霸機場 -> 租車公司",
+        category: "交通",
+        note: "出境 + 租車公司接送 + 租車 / \n行腳租車 (Pin code : 63512871)",
+        cost: "20,100円 \n(已付2,010円)",
+        link: "https://footprint-rentacar.com/tw/?gad_source=1&gad_campaignid=23042212051&gbraid=0AAAAApSpzaDMQUoomNsx25fO0ah1tP3Kd&gclid=CjwKCAiA8vXIBhAtEiwAf3B-g-fokFSmDiSe3qHEDJsSFu52hsEVGfGzroO2yvRfV0f1auLCQHDygxoCXP0QAvD_BwE",
+      },
+      {
+        day: "D1",
+        label: "D1 · 1/9",
+        time: "17:55–19:05（1小時10分）",
+        title: "租車公司 -> 飯店",
+        category: "交通",
+        note: "時間很多可以順路去PARCO CITY 逛街 + 晚餐",
+        cost: "",
+        link: "https://plumpyblog.com/ryoshi-shokudo/",
       },
       {
         day: "D1",
@@ -267,31 +320,49 @@
         time: "19:05–19:25（20分）",
         title: "飯店 check in",
         category: "飯店 / 休息",
-        note: "Sunset Beach Hotel\n辦理入住、放行李。",
-        cost: "約 NTD 4,420",
-        link: "https://www.booking.com/"
+        note: "sunset beach hotel",
+        cost: "NTD 4420",
+        link: "booking.com",
       },
       {
         day: "D1",
         label: "D1 · 1/9",
         time: "19:25–21:25（2小時）",
-        title: "美國村逛街＋晚餐",
+        title: "美國村",
         category: "用餐",
-        note: "逛街＋晚餐。\n建議：浜屋そば（適合小孩）、A&W 美式餐廳（親子友善）。",
+        note: "逛街＋晚餐 / \nAI 推薦 :  浜屋そば（離美國村10分鐘) - 沖繩麵\nAI 推薦 : A&W - 美式漢堡",
         cost: "",
-        link: "https://www.jathao.com/2015/10/aeon.html"
+        link: "https://www.jathao.com/2015/10/aeon.html",
       },
-
-      // Day 2
+      {
+        day: "D1",
+        label: "D1 · 1/9",
+        time: "21:25–22:55（1小時30分）",
+        title: "AEON 北谷",
+        category: "購物 / 超市",
+        note: "媽媽時間 (超市到 23:00 商店到22:00)",
+        cost: "",
+        link: "https://bobowin.blog/aeon-american/",
+      },
       {
         day: "D2",
         label: "D2 · 1/10",
         time: "08:00–09:00（1小時）",
-        title: "飯店早餐",
+        title: "飯店",
         category: "用餐",
-        note: "飯店內用早餐，時間彈性。",
+        note: "飯店早餐",
         cost: "",
-        link: ""
+        link: "",
+      },
+      {
+        day: "D2",
+        label: "D2 · 1/10",
+        time: "09:00–09:30（30分）",
+        title: "飯店 > 沖繩兒童王國",
+        category: "交通",
+        note: "",
+        cost: "",
+        link: "",
       },
       {
         day: "D2",
@@ -299,82 +370,302 @@
         time: "09:30–12:30（3小時）",
         title: "沖繩兒童王國",
         category: "景點",
-        note: "動物園＋遊樂設施，小孩放電行程。\n可以視狀況中途休息、看動物。",
-        cost: "成人 1000円，小孩 free",
-        link: "https://www.okzm.jp/information-cht/"
+        note: "平日營業時間 : 9:30-17:30\n假日營業時間 : 9:30-21:00",
+        cost: "成人 1000円\n小孩 free",
+        link: "https://www.okzm.jp/information-cht/",
+      },
+      {
+        day: "D2",
+        label: "D2 · 1/10",
+        time: "12:30–14:30（2小時）",
+        title: "午餐+回飯店",
+        category: "用餐",
+        note: "AI 推薦 :  ステーキハウス四季（Sunabe）-鐵板牛排\nAI 推薦 :  鳥と卵の専門店 鳥玉（北谷店）- 親子丼、玉子燒、咖哩\nAI 推薦 :  やっぱりステーキ（美國村) - 美式餐廳",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D2",
+        label: "D2 · 1/10",
+        time: "14:30–16:30（2小時）",
+        title: "飯店",
+        category: "飯店 / 休息",
+        note: "充電時間",
+        cost: "NTD 4420",
+        link: "",
+      },
+      {
+        day: "D2",
+        label: "D2 · 1/10",
+        time: "16:30–17:10（40分）",
+        title: "飯店 > 東南植物樂園",
+        category: "交通",
+        note: "",
+        cost: "",
+        link: "",
       },
       {
         day: "D2",
         label: "D2 · 1/10",
         time: "17:10–19:40（2小時30分）",
-        title: "東南植物樂園（夜間燈飾）",
+        title: "東南植物樂園",
         category: "景點",
-        note: "賞燈、散步行程。\n視小孩精神調整停留時間。",
-        cost: "",
-        link: "https://www.southeast-botanical.jp/tw/illumination/"
+        note: "燈光秀，夜間票17:00~22:00 (當天有日本成人節活動，細節未知)",
+        cost: "成人 2500円\n小孩 900円",
+        link: "https://www.southeast-botanical.jp/tw/illumination/",
       },
-
-      // Day 3
+      {
+        day: "D2",
+        label: "D2 · 1/10",
+        time: "19:40–21:40（2小時）",
+        title: "晚餐+回飯店",
+        category: "用餐",
+        note: "AI 推薦 : 燒肉琉球の牛（美國村店）- 燒肉 (建議預約)。",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D3",
+        label: "D3 · 1/11",
+        time: "08:00–09:00（1小時）",
+        title: "飯店",
+        category: "飯店 / 休息",
+        note: "飯店早餐 + check out",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D3",
+        label: "D3 · 1/11",
+        time: "09:00–10:20（1小時20分）",
+        title: "飯店 > 沖繩世界(玉泉洞)",
+        category: "交通",
+        note: "",
+        cost: "",
+        link: "",
+      },
       {
         day: "D3",
         label: "D3 · 1/11",
         time: "10:20–13:20（3小時）",
-        title: "沖繩世界（玉泉洞）",
+        title: "沖繩世界(玉泉洞)",
         category: "景點",
-        note: "洞窟＋園區＋表演，可搭配中午用餐。\n有階梯與坡道，注意娃娃車與小孩體力。",
+        note: "《SUPER EISA太鼓舞》1)10:30 2)12:30 3)14:30　\n《毒蛇表演》1)11:30 2)13:30 3)15:30\n辣椒粉必買",
+        cost: "成人 2000円\n小孩 1000円",
+        link: "《SUPER EISA太鼓舞》1)10:30 2)12:30 3)14:30　\n《毒蛇表演》1)11:30 2)13:30 3)15:30",
+      },
+      {
+        day: "D3",
+        label: "D3 · 1/11",
+        time: "13:20–14:50（1小時30分）",
+        title: "午餐",
+        category: "用餐",
+        note: "AI推薦 : 玉家そば 本店（南城) - 沖繩麵\nAI推薦 : 南部咖啡廳：Cafe やぶさち（海景) - 義大利麵、飯類\nAI推薦 : 燒肉きんぐ（豐崎) - Outlet 前非常順路",
         cost: "",
-        link: "https://www.gyokusendo.co.jp/okinawaworld/"
+        link: "",
+      },
+      {
+        day: "D3",
+        label: "D3 · 1/11",
+        time: "14:50–15:20（30分）",
+        title: "午餐 > ASHIBINAA Outlet or PARCO CITY",
+        category: "交通",
+        note: "可考慮去costco (10分鐘車程)",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D3",
+        label: "D3 · 1/11",
+        time: "15:20–17:50（2小時30分）",
+        title: "ASHIBINAA Outlet or PARCO CITY",
+        category: "購物 / 超市",
+        note: "血拚 (網友普遍推薦parco city)",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D3",
+        label: "D3 · 1/11",
+        time: "17:50–18:20（30分）",
+        title: "ASHIBINAA Outlet or PARCO CITY  -> 飯店",
+        category: "交通",
+        note: "",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D3",
+        label: "D3 · 1/11",
+        time: "18:20–18:50（30分）",
+        title: "飯店 checkin",
+        category: "飯店 / 休息",
+        note: "大和ROYNET國際通飯店 (飯店付費停車場，先到先贏)\n 星期日 12:00~18:00 步行者天國",
+        cost: "NTD 4227",
+        link: "trip.com",
       },
       {
         day: "D3",
         label: "D3 · 1/11",
         time: "18:50–20:50（2小時）",
-        title: "國際通逛街＋晚餐",
+        title: "國際通逛街+晚餐",
         category: "用餐",
-        note: "最後採買＋晚餐時間，視小孩狀況提早回飯店休息。",
+        note: "AI推薦 : 花笠食堂 - 家庭式料理\nAI推薦 : 三笠食堂（24 小時) - 在地餐廳\nelbun",
         cost: "",
-        link: ""
+        link: "",
+      },
+      {
+        day: "D4",
+        label: "D4 · 1/12",
+        time: "08:30–10:00（1小時30分）",
+        title: "飯店",
+        category: "用餐",
+        note: "早餐 + check out / \n早餐要加購322/人，兒童免費",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D4",
+        label: "D4 · 1/12",
+        time: "10:00–10:15（15分）",
+        title: "飯店 > 波上宮",
+        category: "交通",
+        note: "",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D4",
+        label: "D4 · 1/12",
+        time: "10:15–10:45（30分）",
+        title: "波上宮",
+        category: "景點",
+        note: "",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D4",
+        label: "D4 · 1/12",
+        time: "10:45–11:00（15分）",
+        title: "波上宮 > 那霸港",
+        category: "交通",
+        note: "",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D4",
+        label: "D4 · 1/12",
+        time: "11:00–12:30（1小時30分）",
+        title: "那霸港",
+        category: "景點",
+        note: "11:30 觀光船",
+        cost: "",
+        link: "https://fullfenblog.tw/glass-bottom-boat/",
+      },
+      {
+        day: "D4",
+        label: "D4 · 1/12",
+        time: "12:30–13:45（1小時15分）",
+        title: "午餐+到租車公司",
+        category: "用餐",
+        note: "午餐後去租車公司還車 / \n可以考慮搭配海鮮丼吃到飽方案\n傑克牛排館(可能人多來不及)\n琉球新麵 通堂 小祿本店\nNakazaya なかざ家 租車公司附近\nAI推薦 : 大東そば（赤嶺站旁）\nAI推薦 : 機場國內線 4F 餐廳街",
+        cost: "",
+        link: "https://tw.westmarine.co.jp/orca_lunch.php",
+      },
+      {
+        day: "D4",
+        label: "D4 · 1/12",
+        time: "13:45–14:15（30分）",
+        title: "租車公司 > 機場",
+        category: "交通",
+        note: "還車+接駁到機場",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D4",
+        label: "D4 · 1/12",
+        time: "14:15–16:55（2小時40分）",
+        title: "那霸機場",
+        category: "交通",
+        note: "check in/ 尖峰時段最好保留2:30",
+        cost: "",
+        link: "",
+      },
+      {
+        day: "D4",
+        label: "D4 · 1/12",
+        time: "16:55–17:55（1小時）",
+        title: "那霸機場 > 桃機T1",
+        category: "交通",
+        note: "AirAsia FD231",
+        cost: "",
+        link: "",
       }
     ];
 
-    // 取得所有天數（D1, D2, D3）
+
+
     const days = Array.from(new Set(schedule.map(item => item.day)));
+
+    const dayMeta = {};
+    schedule.forEach(item => {{
+      if (!dayMeta[item.day]) {{
+        dayMeta[item.day] = item.label;
+      }}
+    }});
 
     const dayTabsEl = document.getElementById("dayTabs");
     const cardContainer = document.getElementById("cardContainer");
     const emptyState = document.getElementById("emptyState");
+    const dayTitleEl = document.getElementById("dayTitle");
 
     let currentDay = days[0] || "D1";
 
-    function renderDayTabs() {
+    function renderDayTabs() {{
       dayTabsEl.innerHTML = "";
-      days.forEach(day => {
+      days.forEach(day => {{
         const btn = document.createElement("button");
         btn.className = "day-tab" + (day === currentDay ? " active" : "");
-        const label = schedule.find(i => i.day === day)?.label || day;
-        btn.textContent = label;
-        btn.addEventListener("click", () => {
+        const label = dayMeta[day] || day;
+        const parts = label.split(" · ");
+        const d = parts[0] || day;
+        const date = parts[1] || "";
+        btn.innerHTML = "<strong>" + d + "</strong><span>" + date + "</span>";
+        btn.addEventListener("click", () => {{
           currentDay = day;
           renderDayTabs();
           renderCards();
-        });
+        }});
         dayTabsEl.appendChild(btn);
-      });
+      }});
     }
 
-    function renderCards() {
+    function renderCards() {{
       const items = schedule.filter(item => item.day === currentDay);
       cardContainer.innerHTML = "";
 
-      if (!items.length) {
+      const label = dayMeta[currentDay] || currentDay;
+      const parts = label.split(" · ");
+      const d = parts[0] || currentDay;
+      const date = parts[1] || "";
+      dayTitleEl.innerHTML = d + " 行程 <span>" + date + "</span>";
+
+      if (!items.length) {{
         emptyState.style.display = "block";
         return;
-      }
+      }}
       emptyState.style.display = "none";
 
-      items.forEach(item => {
+      items.forEach(item => {{
         const card = document.createElement("div");
         card.className = "card";
+
+        const dot = document.createElement("div");
+        dot.className = "dot";
+        card.appendChild(dot);
 
         const header = document.createElement("div");
         header.className = "card-header";
@@ -406,20 +697,21 @@
         footer.className = "card-footer";
 
         const cost = document.createElement("div");
+        cost.className = "cost";
         cost.textContent = item.cost || "";
 
         const btn = document.createElement("button");
         btn.className = "btn-link";
-        if (item.link) {
+        if (item.link) {{
           btn.textContent = "查看連結";
-          btn.addEventListener("click", (e) => {
+          btn.addEventListener("click", (e) => {{
             e.stopPropagation();
             window.open(item.link, "_blank");
-          });
-        } else {
+          }});
+        }} else {{
           btn.textContent = "無連結";
           btn.disabled = true;
-        }
+        }}
 
         footer.appendChild(cost);
         footer.appendChild(btn);
@@ -429,63 +721,17 @@
         card.appendChild(footer);
 
         cardContainer.appendChild(card);
-      });
+      }});
     }
 
-    // 底部 nav 簡單切換（目前只有行程在用）
-    document.getElementById("nav-plan").addEventListener("click", () => {
-      document.getElementById("nav-plan").classList.add("active");
-      document.getElementById("nav-info").classList.remove("active");
-      document.getElementById("nav-settings").classList.remove("active");
-      cardContainer.style.display = "block";
-      emptyState.style.display = schedule.some(i => i.day === currentDay) ? "none" : "block";
-    });
-
-    document.getElementById("nav-info").addEventListener("click", () => {
-      document.getElementById("nav-plan").classList.remove("active");
-      document.getElementById("nav-info").classList.add("active");
-      document.getElementById("nav-settings").classList.remove("active");
-
-      cardContainer.innerHTML =
-        `<div class="card">
-          <div class="title">使用說明</div>
-          <div class="note">
-          ・下方「行程」頁：依天數顯示當天安排。\n
-          ・上方粉色按鈕：切換 D1 / D2 / D3。\n
-          ・卡片中的「查看連結」會開啟餐廳或景點官網。\n
-          ・可以在手機瀏覽器選「加入主畫面」，變成像 APP 一樣使用。
-          </div>
-        </div>`;
-      emptyState.style.display = "none";
-    });
-
-    document.getElementById("nav-settings").addEventListener("click", () => {
-      document.getElementById("nav-plan").classList.remove("active");
-      document.getElementById("nav-info").classList.remove("active");
-      document.getElementById("nav-settings").classList.add("active");
-
-      cardContainer.innerHTML =
-        `<div class="card">
-          <div class="title">小提醒</div>
-          <div class="note">
-          ・帶小孩：預留午睡與臨時休息時間，不要把行程排滿。\n
-          ・下雨備案：美國村 / 國際通 / 購物中心可以當備用行程。\n
-          ・可以自己打開 index.html，把上面的 schedule 陣列加更多行程。
-          </div>
-        </div>`;
-      emptyState.style.display = "none";
-    });
-
-    // 初始化
     renderDayTabs();
     renderCards();
 
-    // ====== 2. 註冊 Service Worker（PWA 離線 / 安裝用） ======
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("service-worker.js").catch(() => {});
-      });
-    }
+    if ("serviceWorker" in navigator) {{
+      window.addEventListener("load", () => {{
+        navigator.serviceWorker.register("service-worker.js").catch(() => {{}});
+      }});
+    }}
   </script>
 </body>
 </html>
