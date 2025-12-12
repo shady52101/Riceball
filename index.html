@@ -611,11 +611,11 @@ const schedule = [
     const days = Array.from(new Set(schedule.map(item => item.day)));
 
     const dayMeta = {};
-    schedule.forEach(item => {{
-      if (!dayMeta[item.day]) {{
+    schedule.forEach(item => {
+      if (!dayMeta[item.day]) {
         dayMeta[item.day] = item.label;
-      }}
-    }});
+      }
+    });
 
     const dayTabsEl = document.getElementById("dayTabs");
     const cardContainer = document.getElementById("cardContainer");
@@ -624,9 +624,9 @@ const schedule = [
 
     let currentDay = days[0] || "D1";
 
-    function renderDayTabs() {{
+    function renderDayTabs() {
       dayTabsEl.innerHTML = "";
-      days.forEach(day => {{
+      days.forEach(day => {
         const btn = document.createElement("button");
         btn.className = "day-tab" + (day === currentDay ? " active" : "");
         const label = dayMeta[day] || day;
@@ -634,16 +634,16 @@ const schedule = [
         const d = parts[0] || day;
         const date = parts[1] || "";
         btn.innerHTML = "<strong>" + d + "</strong><span>" + date + "</span>";
-        btn.addEventListener("click", () => {{
+        btn.addEventListener("click", () => {
           currentDay = day;
           renderDayTabs();
           renderCards();
-        }});
+        });
         dayTabsEl.appendChild(btn);
-      }});
+      });
     }
 
-    function renderCards() {{
+    function renderCards() {
       const items = schedule.filter(item => item.day === currentDay);
       cardContainer.innerHTML = "";
 
@@ -653,13 +653,13 @@ const schedule = [
       const date = parts[1] || "";
       dayTitleEl.innerHTML = d + " 行程 <span>" + date + "</span>";
 
-      if (!items.length) {{
+      if (!items.length) {
         emptyState.style.display = "block";
         return;
-      }}
+      }
       emptyState.style.display = "none";
 
-      items.forEach(item => {{
+      items.forEach(item => {
         const card = document.createElement("div");
         card.className = "card";
 
@@ -702,16 +702,16 @@ const schedule = [
 
         const btn = document.createElement("button");
         btn.className = "btn-link";
-        if (item.link) {{
+        if (item.link) {
           btn.textContent = "查看連結";
-          btn.addEventListener("click", (e) => {{
+          btn.addEventListener("click", (e) => {
             e.stopPropagation();
             window.open(item.link, "_blank");
-          }});
-        }} else {{
+          });
+        } else {
           btn.textContent = "無連結";
           btn.disabled = true;
-        }}
+        }
 
         footer.appendChild(cost);
         footer.appendChild(btn);
@@ -721,17 +721,17 @@ const schedule = [
         card.appendChild(footer);
 
         cardContainer.appendChild(card);
-      }});
+      });
     }
 
     renderDayTabs();
     renderCards();
 
-    if ("serviceWorker" in navigator) {{
-      window.addEventListener("load", () => {{
-        navigator.serviceWorker.register("service-worker.js").catch(() => {{}});
-      }});
-    }}
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js").catch(() => {});
+      });
+    }
   </script>
 </body>
 </html>
