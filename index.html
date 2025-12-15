@@ -8,6 +8,7 @@
   <link rel="manifest" href="manifest.webmanifest" />
   <meta name="theme-color" content="#f06292" />
 
+  <!-- iOS PWA -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Okinawa Trip" />
@@ -16,7 +17,6 @@
     :root {
       --primary: #ec407a;
       --primary-dark: #d81b60;
-      --primary-light: #f48fb1;
       --bg: #fef4f8;
       --card-bg: #ffffff;
       --text-main: #212121;
@@ -24,16 +24,13 @@
       --radius-xl: 18px;
       --shadow-soft: 0 10px 24px rgba(233, 30, 99, 0.18);
     }
-
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top left, #ffe3f0 0, #fef4f8 45%, #ffffff 100%);
       color: var(--text-main);
     }
-
     .app {
       max-width: 480px;
       margin: 0 auto;
@@ -41,7 +38,6 @@
       display: flex;
       flex-direction: column;
     }
-
     header {
       padding: 18px 20px 14px;
       background: linear-gradient(135deg, #ec407a, #ff80ab);
@@ -52,27 +48,23 @@
       box-shadow: 0 6px 18px rgba(233, 30, 99, 0.35);
       border-radius: 0 0 24px 24px;
     }
-
     header h1 {
       margin: 0;
       font-size: 22px;
       font-weight: 800;
       letter-spacing: 0.04em;
     }
-
     header .subtitle {
       font-size: 13px;
       opacity: 0.92;
       margin-top: 4px;
     }
-
     .day-tabs-wrap {
       padding: 10px 16px 4px;
       position: sticky;
       top: 72px;
       z-index: 9;
     }
-
     .day-tabs {
       display: flex;
       gap: 8px;
@@ -82,7 +74,6 @@
       box-shadow: 0 6px 16px rgba(0,0,0,0.08);
       backdrop-filter: blur(10px);
     }
-
     .day-tab {
       flex: 1;
       padding: 8px 0;
@@ -95,29 +86,14 @@
       cursor: pointer;
       white-space: nowrap;
     }
-
-    .day-tab span {
-      display: block;
-      font-size: 11px;
-      opacity: 0.8;
-    }
-
-    .day-tab strong {
-      display: block;
-      font-size: 13px;
-    }
-
+    .day-tab span { display: block; font-size: 11px; opacity: 0.8; }
+    .day-tab strong { display: block; font-size: 13px; }
     .day-tab.active {
       background: linear-gradient(135deg, #ec407a, #ff80ab);
       color: #ffffff;
       box-shadow: 0 4px 12px rgba(233, 30, 99, 0.55);
     }
-
-    main {
-      flex: 1;
-      padding: 16px 14px 32px;
-    }
-
+    main { flex: 1; padding: 16px 14px 32px; }
     .day-title {
       font-size: 15px;
       font-weight: 600;
@@ -127,18 +103,8 @@
       justify-content: space-between;
       align-items: center;
     }
-
-    .day-title span {
-      font-size: 12px;
-      opacity: 0.9;
-    }
-
-    .timeline {
-      position: relative;
-      margin-left: 10px;
-      padding-left: 12px;
-    }
-
+    .day-title span { font-size: 12px; opacity: 0.9; }
+    .timeline { position: relative; margin-left: 10px; padding-left: 12px; }
     .timeline::before {
       content: "";
       position: absolute;
@@ -148,7 +114,6 @@
       width: 2px;
       background: linear-gradient(to bottom, rgba(236,64,122,0.1), rgba(236,64,122,0.35));
     }
-
     .card {
       background: var(--card-bg);
       border-radius: var(--radius-xl);
@@ -160,7 +125,6 @@
       cursor: pointer;
       user-select: none;
     }
-
     .card::before {
       content: "";
       position: absolute;
@@ -172,7 +136,6 @@
       background: radial-gradient(circle at center, rgba(236,64,122,0.18), transparent 65%);
       opacity: 0.7;
     }
-
     .dot {
       position: absolute;
       left: -18px;
@@ -184,26 +147,15 @@
       background: var(--primary);
       box-shadow: 0 0 0 4px rgba(236,64,122,0.25);
     }
-
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       gap: 10px;
     }
-
-    .time {
-      font-size: 11px;
-      color: var(--text-sub);
-      margin-bottom: 4px;
-    }
-
-    .title {
-      font-size: 15px;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
-
+    .time { font-size: 11px; color: var(--text-sub); margin-bottom: 4px; }
+    .title { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+    .right-top { display:flex; align-items:center; gap:8px; }
     .category-chip {
       font-size: 11px;
       padding: 4px 10px;
@@ -214,28 +166,14 @@
       margin-top: 2px;
       white-space: nowrap;
     }
-
     .chev {
       font-size: 14px;
-      color: rgba(216,27,96,0.7);
-      margin-left: 10px;
-      transform: rotate(0deg);
+      color: rgba(216,27,96,0.75);
       transition: transform 0.18s ease;
-      white-space: nowrap;
     }
-
-    .card.collapsed .chev {
-      transform: rotate(-90deg);
-    }
-
-    .detail {
-      margin-top: 10px;
-    }
-
-    .card.collapsed .detail {
-      display: none;
-    }
-
+    .card.collapsed .chev { transform: rotate(-90deg); }
+    .detail { margin-top: 10px; }
+    .card.collapsed .detail { display: none; }
     .note {
       font-size: 13px;
       color: var(--text-sub);
@@ -243,7 +181,6 @@
       line-height: 1.5;
       white-space: pre-line;
     }
-
     .card-footer {
       display: flex;
       align-items: center;
@@ -253,19 +190,8 @@
       gap: 8px;
       flex-wrap: wrap;
     }
-
-    .cost {
-      font-weight: 500;
-      margin-right: auto;
-      white-space: pre-line;
-    }
-
-    .link-wrap {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
+    .cost { font-weight: 500; margin-right: auto; white-space: pre-line; }
+    .link-wrap { display: flex; gap: 8px; flex-wrap: wrap; }
     .btn-link {
       font-size: 12px;
       padding: 6px 12px;
@@ -274,10 +200,9 @@
       background: linear-gradient(135deg, #ec407a, #ff80ab);
       color: #ffffff;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(233,30,99,0.45);
+      box-shadow: 0 4px 10px rgba(233,30,99,0.35);
       white-space: nowrap;
     }
-
     .btn-link:disabled {
       opacity: 0.4;
       box-shadow: none;
@@ -285,7 +210,6 @@
       background: #e0e0e0;
       color: #757575;
     }
-
     .empty {
       text-align: center;
       color: var(--text-sub);
@@ -313,642 +237,539 @@
   </div>
 
   <script>
-
+/**
+ * ✅ 連結自由命名規則（你只要改這裡）
+ * link 可以是：
+ * 1) 字串（可用 \\n 放多個網址）=> 會自動產生「icon + 網站名」
+ * 2) 陣列 [{ label, url }, ...] => 你給什麼名字就顯示什麼名字（icon 你也可以自己寫進 label）
+ */
 const schedule = [
-      {
-    "day": "D1",
-    "label": "D1 · 1/9",
-    "time": "13:25–15:55（2小時30分）",
-    "title": "桃機T1 -> 那霸機場",
-    "category": "交通",
-    "note": "AirAsia FD230 / \n國際線4F或是國內線1F有豬肉蛋飯糰",
-    "cost": "18262 NTD (來回)",
-    "link": [
-      {
-        "label": "Visit Japan Web",
-        "url": "https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/"
-      },
-      {
-        "label": "豬肉蛋飯糰介紹",
-        "url": "https://hanblog.tw/porktamago/"
-      }
+  {
+    day: "D1",
+    label: "D1 · 1/9",
+    time: "13:25–15:55（2小時30分）",
+    title: "桃機T1 -> 那霸機場",
+    category: "交通",
+    note: "AirAsia FD230\n手提7kg*3 託運20kg*2\n國際線4F或是國內線1F有豬肉蛋飯糰",
+    cost: "18262 NTD (來回)",
+    link: [
+      { label: "✈️ Visit Japan Web", url: "https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/" },
+      { label: "🌐 豬肉蛋飯糰介紹", url: "https://hanblog.tw/porktamago/" }
     ],
-    "links": [
-      {
-        "label": "Visit Japan Web",
-        "url": "https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/"
-      },
-      {
-        "label": "豬肉蛋飯糰介紹",
-        "url": "https://hanblog.tw/porktamago/"
-      }
-    ]
   },
   {
-    "day": "D1",
-    "label": "D1 · 1/9",
-    "time": "15:55–17:55（2小時）",
-    "title": "那霸機場 -> 租車公司",
-    "category": "交通",
-    "note": "出境 + 租車公司接送 + 租車 / \n行腳租車 (Pin code : 63512871)",
-    "cost": "20,100円 \n(已付2,010円)",
-    "link": "https://footprint-rentacar.com/tw/",
-    "links": [
-      {
-        "label": "🌐 footprint-rentacar.com",
-        "url": "https://footprint-rentacar.com/tw/"
-      }
-    ]
+    day: "D1",
+    label: "D1 · 1/9",
+    time: "15:55–17:55（2小時）",
+    title: "那霸機場 -> 租車公司",
+    category: "交通",
+    note: "出境 + 租車公司接送 + 租車 / \\n行腳租車 (Pin code : 63512871)",
+    cost: "20,100円 \\n(已付2,010円)",
+    link: "https://footprint-rentacar.com/tw/?gad_source=1&gad_campaignid=23042212051&gbraid=0AAAAApSpzaDMQUoomNsx25fO0ah1tP3Kd&gclid=CjwKCAiA8vXIBhAtEiwAf3B-g-fokFSmDiSe3qHEDJsSFu52hsEVGfGzroO2yvRfV0f1auLCQHDygxoCXP0QAvD_BwE",
   },
   {
-    "day": "D1",
-    "label": "D1 · 1/9",
-    "time": "17:55–19:05（1小時10分）",
-    "title": "租車公司 -> 飯店",
-    "category": "交通",
-    "note": "時間很多可以順路去PARCO CITY 逛街 + 晚餐",
-    "cost": "",
-    "link": "https://plumpyblog.com/ryoshi-shokudo/",
-    "links": [
-      {
-        "label": "🌐 plumpyblog.com",
-        "url": "https://plumpyblog.com/ryoshi-shokudo/"
-      }
-    ]
+    day: "D1",
+    label: "D1 · 1/9",
+    time: "17:55–19:05（1小時10分）",
+    title: "租車公司 -> 飯店",
+    category: "交通",
+    note: "時間很多可以順路去PARCO CITY 逛街 + 晚餐",
+    cost: "",
+    link: "https://plumpyblog.com/ryoshi-shokudo/",
   },
   {
-    "day": "D1",
-    "label": "D1 · 1/9",
-    "time": "19:05–19:25（20分）",
-    "title": "飯店 check in",
-    "category": "飯店 / 休息",
-    "note": "sunset beach hotel",
-    "cost": "NTD 4420",
-    "link": "booking.com",
-    "links": [
-      {
-        "label": "🎟️ booking.com",
-        "url": "https://booking.com"
-      }
-    ]
+    day: "D1",
+    label: "D1 · 1/9",
+    time: "19:05–19:25（20分）",
+    title: "飯店 check in",
+    category: "飯店 / 休息",
+    note: "sunset beach hotel",
+    cost: "NTD 4420",
+    link: "booking.com",
   },
   {
-    "day": "D1",
-    "label": "D1 · 1/9",
-    "time": "19:25–21:25（2小時）",
-    "title": "美國村",
-    "category": "用餐",
-    "note": "逛街＋晚餐 / \nAI 推薦 :  浜屋そば（離美國村10分鐘) - 沖繩麵\nAI 推薦 : A&W - 美式漢堡",
-    "cost": "",
-    "link": "https://www.jathao.com/2015/10/aeon.html",
-    "links": [
-      {
-        "label": "🌐 jathao.com",
-        "url": "https://www.jathao.com/2015/10/aeon.html"
-      }
-    ]
+    day: "D1",
+    label: "D1 · 1/9",
+    time: "19:25–21:25（2小時）",
+    title: "美國村",
+    category: "用餐",
+    note: "逛街＋晚餐 / \\nAI 推薦 :  浜屋そば（離美國村10分鐘) - 沖繩麵\\nAI 推薦 : A&W - 美式漢堡",
+    cost: "",
+    link: "https://www.jathao.com/2015/10/aeon.html",
   },
   {
-    "day": "D1",
-    "label": "D1 · 1/9",
-    "time": "21:25–22:55（1小時30分）",
-    "title": "AEON 北谷",
-    "category": "購物 / 超市",
-    "note": "媽媽時間 (超市到 23:00 商店到22:00)",
-    "cost": "",
-    "link": "https://bobowin.blog/aeon-american/",
-    "links": [
-      {
-        "label": "🌐 bobowin.blog",
-        "url": "https://bobowin.blog/aeon-american/"
-      }
-    ]
+    day: "D1",
+    label: "D1 · 1/9",
+    time: "21:25–22:55（1小時30分）",
+    title: "AEON 北谷",
+    category: "購物 / 超市",
+    note: "媽媽時間 (超市到 23:00 商店到22:00)",
+    cost: "",
+    link: "https://bobowin.blog/aeon-american/",
   },
   {
-    "day": "D2",
-    "label": "D2 · 1/10",
-    "time": "08:00–09:00（1小時）",
-    "title": "飯店",
-    "category": "用餐",
-    "note": "飯店早餐",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D2",
+    label: "D2 · 1/10",
+    time: "08:00–09:00（1小時）",
+    title: "飯店",
+    category: "用餐",
+    note: "飯店早餐",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D2",
-    "label": "D2 · 1/10",
-    "time": "09:00–09:30（30分）",
-    "title": "飯店 > 沖繩兒童王國",
-    "category": "交通",
-    "note": "",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D2",
+    label: "D2 · 1/10",
+    time: "09:00–09:30（30分）",
+    title: "飯店 > 沖繩兒童王國",
+    category: "交通",
+    note: "",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D2",
-    "label": "D2 · 1/10",
-    "time": "09:30–12:30（3小時）",
-    "title": "沖繩兒童王國",
-    "category": "景點",
-    "note": "平日營業時間 : 9:30-17:30\n假日營業時間 : 9:30-21:00",
-    "cost": "成人 1000円\n小孩 free",
-    "link": "https://www.okzm.jp/information-cht/",
-    "links": [
-      {
-        "label": "🌐 okzm.jp",
-        "url": "https://www.okzm.jp/information-cht/"
-      }
-    ]
+    day: "D2",
+    label: "D2 · 1/10",
+    time: "09:30–12:30（3小時）",
+    title: "沖繩兒童王國",
+    category: "景點",
+    note: "平日營業時間 : 9:30-17:30\\n假日營業時間 : 9:30-21:00",
+    cost: "成人 1000円\\n小孩 free",
+    link: "https://www.okzm.jp/information-cht/",
   },
   {
-    "day": "D2",
-    "label": "D2 · 1/10",
-    "time": "12:30–14:30（2小時）",
-    "title": "午餐+回飯店",
-    "category": "用餐",
-    "note": "AI 推薦 :  ステーキハウス四季（Sunabe）-鐵板牛排\nAI 推薦 :  鳥と卵の専門店 鳥玉（北谷店）- 親子丼、玉子燒、咖哩\nAI 推薦 :  やっぱりステーキ（美國村) - 美式餐廳",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D2",
+    label: "D2 · 1/10",
+    time: "12:30–14:30（2小時）",
+    title: "午餐+回飯店",
+    category: "用餐",
+    note: "AI 推薦 :  ステーキハウス四季（Sunabe）-鐵板牛排\\nAI 推薦 :  鳥と卵の専門店 鳥玉（北谷店）- 親子丼、玉子燒、咖哩\\nAI 推薦 :  やっぱりステーキ（美國村) - 美式餐廳",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D2",
-    "label": "D2 · 1/10",
-    "time": "14:30–16:30（2小時）",
-    "title": "飯店",
-    "category": "飯店 / 休息",
-    "note": "充電時間",
-    "cost": "NTD 4420",
-    "link": "",
-    "links": []
+    day: "D2",
+    label: "D2 · 1/10",
+    time: "14:30–16:30（2小時）",
+    title: "飯店",
+    category: "飯店 / 休息",
+    note: "充電時間",
+    cost: "NTD 4420",
+    link: "",
   },
   {
-    "day": "D2",
-    "label": "D2 · 1/10",
-    "time": "16:30–17:10（40分）",
-    "title": "飯店 > 東南植物樂園",
-    "category": "交通",
-    "note": "",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D2",
+    label: "D2 · 1/10",
+    time: "16:30–17:10（40分）",
+    title: "飯店 > 東南植物樂園",
+    category: "交通",
+    note: "",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D2",
-    "label": "D2 · 1/10",
-    "time": "17:10–19:40（2小時30分）",
-    "title": "東南植物樂園",
-    "category": "景點",
-    "note": "燈光秀，夜間票17:00~22:00 (當天有日本成人節活動，細節未知)",
-    "cost": "成人 2500円\n小孩 900円",
-    "link": "https://www.southeast-botanical.jp/tw/illumination/",
-    "links": [
-      {
-        "label": "🌐 southeast-botanical.jp",
-        "url": "https://www.southeast-botanical.jp/tw/illumination/"
-      }
-    ]
+    day: "D2",
+    label: "D2 · 1/10",
+    time: "17:10–19:40（2小時30分）",
+    title: "東南植物樂園",
+    category: "景點",
+    note: "燈光秀，夜間票17:00~22:00 (當天有日本成人節活動，細節未知)",
+    cost: "成人 2500円\\n小孩 900円",
+    link: "https://www.southeast-botanical.jp/tw/illumination/",
   },
   {
-    "day": "D2",
-    "label": "D2 · 1/10",
-    "time": "19:40–21:40（2小時）",
-    "title": "晚餐+回飯店",
-    "category": "用餐",
-    "note": "AI 推薦 : 燒肉琉球の牛（美國村店）- 燒肉 (建議預約)。",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D2",
+    label: "D2 · 1/10",
+    time: "19:40–21:40（2小時）",
+    title: "晚餐+回飯店",
+    category: "用餐",
+    note: "AI 推薦 : 燒肉琉球の牛（美國村店）- 燒肉 (建議預約)。",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D3",
-    "label": "D3 · 1/11",
-    "time": "08:00–09:00（1小時）",
-    "title": "飯店",
-    "category": "飯店 / 休息",
-    "note": "飯店早餐 + check out",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "08:00–09:00（1小時）",
+    title: "飯店",
+    category: "飯店 / 休息",
+    note: "飯店早餐 + check out",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D3",
-    "label": "D3 · 1/11",
-    "time": "09:00–10:20（1小時20分）",
-    "title": "飯店 > 沖繩世界(玉泉洞)",
-    "category": "交通",
-    "note": "",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "09:00–10:20（1小時20分）",
+    title: "飯店 > 沖繩世界(玉泉洞)",
+    category: "交通",
+    note: "",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D3",
-    "label": "D3 · 1/11",
-    "time": "10:20–13:20（3小時）",
-    "title": "沖繩世界(玉泉洞)",
-    "category": "景點",
-    "note": "《SUPER EISA太鼓舞》1)10:30 2)12:30 3)14:30　\n《毒蛇表演》1)11:30 2)13:30 3)15:30\n辣椒粉必買",
-    "cost": "成人 2000円\n小孩 1000円",
-    "link": "",
-    "links": []
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "10:20–13:20（3小時）",
+    title: "沖繩世界(玉泉洞)",
+    category: "景點",
+    note: "《SUPER EISA太鼓舞》1)10:30 2)12:30 3)14:30　\\n《毒蛇表演》1)11:30 2)13:30 3)15:30\\n辣椒粉必買",
+    cost: "成人 2000円\\n小孩 1000円",
+    link: "https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E4%B8%96%E7%95%8C+%E7%8E%89%E6%B3%89%E6%B4%9E",
   },
   {
-    "day": "D3",
-    "label": "D3 · 1/11",
-    "time": "13:20–14:50（1小時30分）",
-    "title": "午餐",
-    "category": "用餐",
-    "note": "AI推薦 : 玉家そば 本店（南城) - 沖繩麵\nAI推薦 : 南部咖啡廳：Cafe やぶさち（海景) - 義大利麵、飯類\nAI推薦 : 燒肉きんぐ（豐崎) - Outlet 前非常順路",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "13:20–14:50（1小時30分）",
+    title: "午餐",
+    category: "用餐",
+    note: "AI推薦 : 玉家そば 本店（南城) - 沖繩麵\\nAI推薦 : 南部咖啡廳：Cafe やぶさち（海景) - 義大利麵、飯類\\nAI推薦 : 燒肉きんぐ（豐崎) - Outlet 前非常順路",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D3",
-    "label": "D3 · 1/11",
-    "time": "14:50–15:20（30分）",
-    "title": "午餐 > ASHIBINAA Outlet or PARCO CITY",
-    "category": "交通",
-    "note": "可考慮去costco (10分鐘車程)",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "14:50–15:20（30分）",
+    title: "午餐 > ASHIBINAA Outlet or PARCO CITY",
+    category: "交通",
+    note: "可考慮去costco (10分鐘車程)",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D3",
-    "label": "D3 · 1/11",
-    "time": "15:20–17:50（2小時30分）",
-    "title": "ASHIBINAA Outlet or PARCO CITY",
-    "category": "購物 / 超市",
-    "note": "血拚 (網友普遍推薦parco city)",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "15:20–17:50（2小時30分）",
+    title: "ASHIBINAA Outlet or PARCO CITY",
+    category: "購物 / 超市",
+    note: "血拚 (網友普遍推薦parco city)",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D3",
-    "label": "D3 · 1/11",
-    "time": "17:50–18:20（30分）",
-    "title": "ASHIBINAA Outlet or PARCO CITY  -> 飯店",
-    "category": "交通",
-    "note": "",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "17:50–18:20（30分）",
+    title: "ASHIBINAA Outlet or PARCO CITY  -> 飯店",
+    category: "交通",
+    note: "",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D3",
-    "label": "D3 · 1/11",
-    "time": "18:20–18:50（30分）",
-    "title": "飯店 checkin",
-    "category": "飯店 / 休息",
-    "note": "大和ROYNET國際通飯店 (飯店付費停車場，先到先贏)\n 星期日 12:00~18:00 步行者天國",
-    "cost": "NTD 4227",
-    "link": "trip.com",
-    "links": [
-      {
-        "label": "🎟️ trip.com",
-        "url": "https://trip.com"
-      }
-    ]
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "18:20–18:50（30分）",
+    title: "飯店 checkin",
+    category: "飯店 / 休息",
+    note: "大和ROYNET國際通飯店 (飯店付費停車場，先到先贏)\\n 星期日 12:00~18:00 步行者天國",
+    cost: "NTD 4227",
+    link: "trip.com",
   },
   {
-    "day": "D3",
-    "label": "D3 · 1/11",
-    "time": "18:50–20:50（2小時）",
-    "title": "國際通逛街+晚餐",
-    "category": "用餐",
-    "note": "AI推薦 : 花笠食堂 - 家庭式料理\nAI推薦 : 三笠食堂（24 小時) - 在地餐廳\nelbun",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "18:50–20:50（2小時）",
+    title: "國際通逛街+晚餐",
+    category: "用餐",
+    note: "AI推薦 : 花笠食堂 - 家庭式料理\\nAI推薦 : 三笠食堂（24 小時) - 在地餐廳\\nelbun",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D4",
-    "label": "D4 · 1/12",
-    "time": "08:30–10:00（1小時30分）",
-    "title": "飯店",
-    "category": "用餐",
-    "note": "早餐 + check out / \n早餐要加購322/人，兒童免費",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D4",
+    label: "D4 · 1/12",
+    time: "08:30–10:00（1小時30分）",
+    title: "飯店",
+    category: "用餐",
+    note: "早餐 + check out / \\n早餐要加購322/人，兒童免費",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D4",
-    "label": "D4 · 1/12",
-    "time": "10:00–10:15（15分）",
-    "title": "飯店 > 波上宮",
-    "category": "交通",
-    "note": "",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D4",
+    label: "D4 · 1/12",
+    time: "10:00–10:15（15分）",
+    title: "飯店 > 波上宮",
+    category: "交通",
+    note: "",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D4",
-    "label": "D4 · 1/12",
-    "time": "10:15–10:45（30分）",
-    "title": "波上宮",
-    "category": "景點",
-    "note": "",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D4",
+    label: "D4 · 1/12",
+    time: "10:15–10:45（30分）",
+    title: "波上宮",
+    category: "景點",
+    note: "",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D4",
-    "label": "D4 · 1/12",
-    "time": "10:45–11:00（15分）",
-    "title": "波上宮 > 那霸港",
-    "category": "交通",
-    "note": "",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D4",
+    label: "D4 · 1/12",
+    time: "10:45–11:00（15分）",
+    title: "波上宮 > 那霸港",
+    category: "交通",
+    note: "",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D4",
-    "label": "D4 · 1/12",
-    "time": "11:00–12:30（1小時30分）",
-    "title": "那霸港",
-    "category": "景點",
-    "note": "11:30 觀光船",
-    "cost": "",
-    "link": "https://fullfenblog.tw/glass-bottom-boat/",
-    "links": [
-      {
-        "label": "🌐 fullfenblog.tw",
-        "url": "https://fullfenblog.tw/glass-bottom-boat/"
-      }
-    ]
+    day: "D4",
+    label: "D4 · 1/12",
+    time: "11:00–12:30（1小時30分）",
+    title: "那霸港",
+    category: "景點",
+    note: "11:30 觀光船",
+    cost: "",
+    link: "https://fullfenblog.tw/glass-bottom-boat/",
   },
   {
-    "day": "D4",
-    "label": "D4 · 1/12",
-    "time": "12:30–13:45（1小時15分）",
-    "title": "午餐+到租車公司",
-    "category": "用餐",
-    "note": "午餐後去租車公司還車 / \n可以考慮搭配海鮮丼吃到飽方案\n傑克牛排館(可能人多來不及)\n琉球新麵 通堂 小祿本店\nNakazaya なかざ家 租車公司附近\nAI推薦 : 大東そば（赤嶺站旁）\nAI推薦 : 機場國內線 4F 餐廳街",
-    "cost": "",
-    "link": "https://tw.westmarine.co.jp/orca_lunch.php",
-    "links": [
-      {
-        "label": "🌐 tw.westmarine.co.jp",
-        "url": "https://tw.westmarine.co.jp/orca_lunch.php"
-      }
-    ]
+    day: "D4",
+    label: "D4 · 1/12",
+    time: "12:30–13:45（1小時15分）",
+    title: "午餐+到租車公司",
+    category: "用餐",
+    note: "午餐後去租車公司還車 / \\n可以考慮搭配海鮮丼吃到飽方案\\n傑克牛排館(可能人多來不及)\\n琉球新麵 通堂 小祿本店\\nNakazaya なかざ家 租車公司附近\\nAI推薦 : 大東そば（赤嶺站旁）\\nAI推薦 : 機場國內線 4F 餐廳街",
+    cost: "",
+    link: "https://tw.westmarine.co.jp/orca_lunch.php",
   },
   {
-    "day": "D4",
-    "label": "D4 · 1/12",
-    "time": "13:45–14:15（30分）",
-    "title": "租車公司 > 機場",
-    "category": "交通",
-    "note": "還車+接駁到機場",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D4",
+    label: "D4 · 1/12",
+    time: "13:45–14:15（30分）",
+    title: "租車公司 > 機場",
+    category: "交通",
+    note: "還車+接駁到機場",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D4",
-    "label": "D4 · 1/12",
-    "time": "14:15–16:55（2小時40分）",
-    "title": "那霸機場",
-    "category": "交通",
-    "note": "check in/ 尖峰時段最好保留2:30",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D4",
+    label: "D4 · 1/12",
+    time: "14:15–16:55（2小時40分）",
+    title: "那霸機場",
+    category: "交通",
+    note: "check in/ 尖峰時段最好保留2:30",
+    cost: "",
+    link: "",
   },
   {
-    "day": "D4",
-    "label": "D4 · 1/12",
-    "time": "16:55–17:55（1小時）",
-    "title": "那霸機場 > 桃機T1",
-    "category": "交通",
-    "note": "AirAsia FD231",
-    "cost": "",
-    "link": "",
-    "links": []
+    day: "D4",
+    label: "D4 · 1/12",
+    time: "16:55–17:55（1小時）",
+    title: "那霸機場 > 桃機T1",
+    category: "交通",
+    note: "AirAsia FD231",
+    cost: "",
+    link: "",
+  },
+];
+
+function normalizeUrl(raw) {
+  const s = (raw || "").trim();
+  if (!s) return "";
+  if (/^https?:\/\//i.test(s)) return s;
+  if (/^[a-z0-9.-]+\.[a-z]{2,}(\/.*)?$/i.test(s)) return "https://" + s;
+  return "";
+}
+
+function splitLinkField(linkField) {
+  if (!linkField) return [];
+  if (Array.isArray(linkField)) return linkField;
+  return String(linkField)
+    .split(/\\n|\\r|,\\s*/g)
+    .map(p => p.trim())
+    .filter(Boolean);
+}
+
+function guessIcon(url) {
+  try {
+    const u = new URL(url);
+    const host = u.hostname.replace(/^www\\./, "").toLowerCase();
+    const full = (host + (u.pathname || "")).toLowerCase();
+    if (full.includes("google.com/maps") || full.includes("maps.app.goo.gl") || host.includes("maps")) return "📍";
+    if (full.includes("booking") || full.includes("ticket") || full.includes("reserve") || full.includes("trip.com") || full.includes("klook") || full.includes("kkday")) return "🎟️";
+    return "🌐";
+  } catch (e) {
+    return "🌐";
   }
-    ];
+}
 
-
-    // ---- helpers: parse links from item.link (support multiple lines) ----
-    function normalizeUrl(raw) {
-      const s = (raw || "").trim();
-      if (!s) return "";
-      if (/^https?:\/\//i.test(s)) return s;
-      // allow simple domains like booking.com / trip.com
-      if (/^[a-z0-9.-]+\.[a-z]{2,}(\/.*)?$/i.test(s)) return "https://" + s;
-      return "";
+// Build item.links (used by UI)
+// - If link is array [{label,url}] => respect label 100%
+// - If link is string => auto label = icon + host
+schedule.forEach(item => {
+  const raw = splitLinkField(item.link);
+  const links = [];
+  raw.forEach(v => {
+    if (typeof v === "string") {
+      const url = normalizeUrl(v);
+      if (!url) return;
+      const icon = guessIcon(url);
+      let host = "";
+      try { host = new URL(url).hostname.replace(/^www\\./,""); } catch(e) {}
+      links.push({ label: `${icon} ${host || "連結"}`, url });
+    } else if (v && v.url) {
+      const url = normalizeUrl(v.url);
+      if (!url) return;
+      links.push({ label: v.label || (guessIcon(url) + " 連結"), url });
     }
+  });
+  item.links = links;
+});
 
-    function splitLinkField(linkField) {
-      if (!linkField) return [];
-      // split by newline, comma, spaces (but keep URLs with query)
-      const parts = String(linkField)
-        .split(/\n|\r|\s+(?=https?:\/\/)|,\s*/g)
-        .map(p => p.trim())
-        .filter(Boolean);
-      const urls = [];
-      for (const p of parts) {
-        const u = normalizeUrl(p);
-        if (u) urls.push(u);
-      }
-      // de-dup
-      return Array.from(new Set(urls));
-    }
+const days = Array.from(new Set(schedule.map(item => item.day)));
+const dayMeta = {};
+schedule.forEach(item => { if (!dayMeta[item.day]) dayMeta[item.day] = item.label; });
 
-    function getLinkMeta(url) {
-      try {
-        const u = new URL(url);
-        const host = u.hostname.replace(/^www\./, "");
-        const path = u.pathname || "";
-        const full = (host + path).toLowerCase();
+const dayTabsEl = document.getElementById("dayTabs");
+const cardContainer = document.getElementById("cardContainer");
+const emptyState = document.getElementById("emptyState");
+const dayTitleEl = document.getElementById("dayTitle");
 
-        if (full.includes("google.com/maps") || full.includes("maps.app.goo.gl") || full.includes("goo.gl/maps") || full.includes("maps")) {
-          return { icon: "📍", label: "地圖", host };
-        }
-        if (full.includes("booking") || full.includes("reserve") || full.includes("ticket") || full.includes("trip.com") || full.includes("klook") || full.includes("kkday")) {
-          return { icon: "🎟️", label: "訂票 / 預約", host };
-        }
-        return { icon: "🌐", label: "網站", host };
-      } catch (e) {
-        return { icon: "🌐", label: "連結", host: "" };
-      }
-    }
+let currentDay = days[0] || "D1";
 
-    // Build links array for each item (without modifying your original fields)
-    schedule.forEach(item => {
-      const urls = splitLinkField(item.link);
-      item.links = urls.map(url => {
-        const meta = getLinkMeta(url);
-        // default button text: icon + host (or label if host empty)
-        const text = meta.host ? `${meta.icon} ${meta.host}` : `${meta.icon} ${meta.label}`;
-        return { label: text, url };
-      });
+function renderDayTabs() {
+  dayTabsEl.innerHTML = "";
+  days.forEach(day => {
+    const btn = document.createElement("button");
+    btn.className = "day-tab" + (day === currentDay ? " active" : "");
+    const label = dayMeta[day] || day;
+    const parts = label.split(" · ");
+    const d = parts[0] || day;
+    const date = parts[1] || "";
+    btn.innerHTML = "<strong>" + d + "</strong><span>" + date + "</span>";
+    btn.addEventListener("click", () => {
+      currentDay = day;
+      renderDayTabs();
+      renderCards();
     });
+    dayTabsEl.appendChild(btn);
+  });
+}
 
-    const days = Array.from(new Set(schedule.map(item => item.day)));
+function renderCards() {
+  const items = schedule.filter(item => item.day === currentDay);
+  cardContainer.innerHTML = "";
 
-    const dayMeta = {};
-    schedule.forEach(item => {
-      if (!dayMeta[item.day]) {
-        dayMeta[item.day] = item.label;
-      }
-    });
+  const label = dayMeta[currentDay] || currentDay;
+  const parts = label.split(" · ");
+  const d = parts[0] || currentDay;
+  const date = parts[1] || "";
+  dayTitleEl.innerHTML = d + " 行程 <span>" + date + "</span>";
 
-    const dayTabsEl = document.getElementById("dayTabs");
-    const cardContainer = document.getElementById("cardContainer");
-    const emptyState = document.getElementById("emptyState");
-    const dayTitleEl = document.getElementById("dayTitle");
+  if (!items.length) {
+    emptyState.style.display = "block";
+    return;
+  }
+  emptyState.style.display = "none";
 
-    let currentDay = days[0] || "D1";
+  items.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card collapsed";
 
-    function renderDayTabs() {
-      dayTabsEl.innerHTML = "";
-      days.forEach(day => {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    card.appendChild(dot);
+
+    const header = document.createElement("div");
+    header.className = "card-header";
+
+    const left = document.createElement("div");
+
+    const time = document.createElement("div");
+    time.className = "time";
+    time.textContent = item.time || "";
+
+    const title = document.createElement("div");
+    title.className = "title";
+    title.textContent = item.title || "";
+
+    left.appendChild(time);
+    left.appendChild(title);
+
+    const right = document.createElement("div");
+    right.className = "right-top";
+
+    const chip = document.createElement("div");
+    chip.className = "category-chip";
+    chip.textContent = item.category || "行程";
+
+    const chev = document.createElement("div");
+    chev.className = "chev";
+    chev.textContent = "▾";
+
+    right.appendChild(chip);
+    right.appendChild(chev);
+
+    header.appendChild(left);
+    header.appendChild(right);
+
+    const detail = document.createElement("div");
+    detail.className = "detail";
+
+    const note = document.createElement("div");
+    note.className = "note";
+    note.textContent = item.note || "";
+
+    const footer = document.createElement("div");
+    footer.className = "card-footer";
+
+    const cost = document.createElement("div");
+    cost.className = "cost";
+    cost.textContent = item.cost || "";
+
+    const linkWrap = document.createElement("div");
+    linkWrap.className = "link-wrap";
+
+    if (Array.isArray(item.links) && item.links.length) {
+      item.links.forEach(l => {
         const btn = document.createElement("button");
-        btn.className = "day-tab" + (day === currentDay ? " active" : "");
-        const label = dayMeta[day] || day;
-        const parts = label.split(" · ");
-        const d = parts[0] || day;
-        const date = parts[1] || "";
-        btn.innerHTML = "<strong>" + d + "</strong><span>" + date + "</span>";
-        btn.addEventListener("click", () => {
-          currentDay = day;
-          renderDayTabs();
-          renderCards();
+        btn.className = "btn-link";
+        btn.textContent = l.label || "連結";
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          window.open(l.url, "_blank");
         });
-        dayTabsEl.appendChild(btn);
+        linkWrap.appendChild(btn);
       });
+    } else {
+      const btn = document.createElement("button");
+      btn.className = "btn-link";
+      btn.textContent = "無連結";
+      btn.disabled = true;
+      linkWrap.appendChild(btn);
     }
 
-    function renderCards() {
-      const items = schedule.filter(item => item.day === currentDay);
-      cardContainer.innerHTML = "";
+    footer.appendChild(cost);
+    footer.appendChild(linkWrap);
 
-      const label = dayMeta[currentDay] || currentDay;
-      const parts = label.split(" · ");
-      const d = parts[0] || currentDay;
-      const date = parts[1] || "";
-      dayTitleEl.innerHTML = d + " 行程 <span>" + date + "</span>";
+    detail.appendChild(note);
+    detail.appendChild(footer);
 
-      if (!items.length) {
-        emptyState.style.display = "block";
-        return;
-      }
-      emptyState.style.display = "none";
+    card.appendChild(header);
+    card.appendChild(detail);
 
-      items.forEach((item, idx) => {
-        const card = document.createElement("div");
-        card.className = "card collapsed";
+    card.addEventListener("click", () => {
+      card.classList.toggle("collapsed");
+    });
 
-        const dot = document.createElement("div");
-        dot.className = "dot";
-        card.appendChild(dot);
+    cardContainer.appendChild(card);
+  });
+}
 
-        const header = document.createElement("div");
-        header.className = "card-header";
+renderDayTabs();
+renderCards();
 
-        const left = document.createElement("div");
-        const time = document.createElement("div");
-        time.className = "time";
-        time.textContent = item.time;
-
-        const title = document.createElement("div");
-        title.className = "title";
-        title.textContent = item.title;
-
-        left.appendChild(time);
-        left.appendChild(title);
-
-        const right = document.createElement("div");
-        right.style.display = "flex";
-        right.style.alignItems = "center";
-
-        const chip = document.createElement("div");
-        chip.className = "category-chip";
-        chip.textContent = item.category || "行程";
-
-        const chev = document.createElement("div");
-        chev.className = "chev";
-        chev.textContent = "▾";
-
-        right.appendChild(chip);
-        right.appendChild(chev);
-
-        header.appendChild(left);
-        header.appendChild(right);
-
-        const detail = document.createElement("div");
-        detail.className = "detail";
-
-        const note = document.createElement("div");
-        note.className = "note";
-        note.textContent = item.note || "";
-
-        const footer = document.createElement("div");
-        footer.className = "card-footer";
-
-        const cost = document.createElement("div");
-        cost.className = "cost";
-        cost.textContent = item.cost || "";
-
-        footer.appendChild(cost);
-
-        const linkWrap = document.createElement("div");
-        linkWrap.className = "link-wrap";
-
-        if (Array.isArray(item.links) && item.links.length) {
-          item.links.forEach(l => {
-            const btn = document.createElement("button");
-            btn.className = "btn-link";
-            btn.textContent = l.label || "連結";
-            btn.addEventListener("click", (e) => {
-              e.stopPropagation();
-              window.open(l.url, "_blank");
-            });
-            linkWrap.appendChild(btn);
-          });
-        } else {
-          const btn = document.createElement("button");
-          btn.className = "btn-link";
-          btn.textContent = "無連結";
-          btn.disabled = true;
-          linkWrap.appendChild(btn);
-        }
-
-        footer.appendChild(linkWrap);
-
-        detail.appendChild(note);
-        detail.appendChild(footer);
-
-        card.appendChild(header);
-        card.appendChild(detail);
-
-        card.addEventListener("click", () => {
-          card.classList.toggle("collapsed");
-        });
-
-        cardContainer.appendChild(card);
-      });
-    }
-
-    renderDayTabs();
-    renderCards();
-
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("service-worker.js").catch(() => {});
-      });
-    }
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js").catch(() => {});
+  });
+}
   </script>
 </body>
 </html>
-
