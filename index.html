@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Okinawa Trip Planner</title>
 
-<link rel="manifest" href="manifest.json" />
+  <link rel="manifest" href="manifest.webmanifest" />
   <meta name="theme-color" content="#f06292" />
 
-  <!-- iOS PWA -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Okinawa Trip" />
@@ -158,6 +157,8 @@
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
+      cursor: pointer;
+      user-select: none;
     }
 
     .card::before {
@@ -214,6 +215,27 @@
       white-space: nowrap;
     }
 
+    .chev {
+      font-size: 14px;
+      color: rgba(216,27,96,0.7);
+      margin-left: 10px;
+      transform: rotate(0deg);
+      transition: transform 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .card.collapsed .chev {
+      transform: rotate(-90deg);
+    }
+
+    .detail {
+      margin-top: 10px;
+    }
+
+    .card.collapsed .detail {
+      display: none;
+    }
+
     .note {
       font-size: 13px;
       color: var(--text-sub);
@@ -224,7 +246,6 @@
 
     .card-footer {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       margin-top: 8px;
       font-size: 12px;
@@ -235,6 +256,14 @@
 
     .cost {
       font-weight: 500;
+      margin-right: auto;
+      white-space: pre-line;
+    }
+
+    .link-wrap {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .btn-link {
@@ -246,6 +275,7 @@
       color: #ffffff;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(233,30,99,0.45);
+      white-space: nowrap;
     }
 
     .btn-link:disabled {
@@ -268,7 +298,7 @@
   <div class="app">
     <header>
       <h1>Okinawa Trip</h1>
-      <div class="subtitle">四天親子行程 · 點上方切換日期</div>
+      <div class="subtitle">沖繩衝衝衝</div>
     </header>
 
     <div class="day-tabs-wrap">
@@ -283,17 +313,17 @@
   </div>
 
   <script>
+
 const schedule = [
       {
         day: "D1",
         label: "D1 · 1/9",
         time: "13:25–15:55（2小時30分）",
-        title: "桃機T1 -> 那霸機場",
+        title: "桃園機場 T1 -> 那霸機場",
         category: "交通",
-        note: "AirAsia FD230 / \n國際線4F或是國內線1F有豬肉蛋飯糰",
-        cost: "18262 NTD (來回)",
-        link: "https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/",
-        link2: "https://hanblog.tw/porktamago/",
+        note: "AirAsia FD230\n國際線4F或是國內線1F有豬肉蛋飯糰",
+        cost: "已付 18262 NTD (來回)",
+        link: "https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/\nhttps://hanblog.tw/porktamago/",
       },
       {
         day: "D1",
@@ -563,7 +593,10 @@ const schedule = [
         category: "景點",
         note: "11:30 觀光船",
         cost: "",
-        link: "https://fullfenblog.tw/glass-bottom-boat/",
+        link: [
+  { label: "玻璃船介紹", url: "https://fullfenblog.tw/glass-bottom-boat/" },
+  { label: "📍 那霸港地圖", url: "https://maps.google.com/?q=Naha+Port" }
+],
       },
       {
         day: "D4",
@@ -608,6 +641,61 @@ const schedule = [
     ];
 
 
+    // ---- helpers: parse links from item.link (support multiple lines) ----
+    function normalizeUrl(raw) {
+      const s = (raw || "").trim();
+      if (!s) return "";
+      if (/^https?:\/\//i.test(s)) return s;
+      // allow simple domains like booking.com / trip.com
+      if (/^[a-z0-9.-]+\.[a-z]{2,}(\/.*)?$/i.test(s)) return "https://" + s;
+      return "";
+    }
+
+    function splitLinkField(linkField) {
+      if (!linkField) return [];
+      // split by newline, comma, spaces (but keep URLs with query)
+      const parts = String(linkField)
+        .split(/\n|\r|\s+(?=https?:\/\/)|,\s*/g)
+        .map(p => p.trim())
+        .filter(Boolean);
+      const urls = [];
+      for (const p of parts) {
+        const u = normalizeUrl(p);
+        if (u) urls.push(u);
+      }
+      // de-dup
+      return Array.from(new Set(urls));
+    }
+
+    function getLinkMeta(url) {
+      try {
+        const u = new URL(url);
+        const host = u.hostname.replace(/^www\./, "");
+        const path = u.pathname || "";
+        const full = (host + path).toLowerCase();
+
+        if (full.includes("google.com/maps") || full.includes("maps.app.goo.gl") || full.includes("goo.gl/maps") || full.includes("maps")) {
+          return { icon: "📍", label: "地圖", host };
+        }
+        if (full.includes("booking") || full.includes("reserve") || full.includes("ticket") || full.includes("trip.com") || full.includes("klook") || full.includes("kkday")) {
+          return { icon: "🎟️", label: "訂票 / 預約", host };
+        }
+        return { icon: "🌐", label: "網站", host };
+      } catch (e) {
+        return { icon: "🌐", label: "連結", host: "" };
+      }
+    }
+
+    // Build links array for each item (without modifying your original fields)
+    schedule.forEach(item => {
+      const urls = splitLinkField(item.link);
+      item.links = urls.map(url => {
+        const meta = getLinkMeta(url);
+        // default button text: icon + host (or label if host empty)
+        const text = meta.host ? `${meta.icon} ${meta.host}` : `${meta.icon} ${meta.label}`;
+        return { label: text, url };
+      });
+    });
 
     const days = Array.from(new Set(schedule.map(item => item.day)));
 
@@ -660,9 +748,9 @@ const schedule = [
       }
       emptyState.style.display = "none";
 
-      items.forEach(item => {
+      items.forEach((item, idx) => {
         const card = document.createElement("div");
-        card.className = "card";
+        card.className = "card collapsed";
 
         const dot = document.createElement("div");
         dot.className = "dot";
@@ -683,12 +771,26 @@ const schedule = [
         left.appendChild(time);
         left.appendChild(title);
 
+        const right = document.createElement("div");
+        right.style.display = "flex";
+        right.style.alignItems = "center";
+
         const chip = document.createElement("div");
         chip.className = "category-chip";
         chip.textContent = item.category || "行程";
 
+        const chev = document.createElement("div");
+        chev.className = "chev";
+        chev.textContent = "▾";
+
+        right.appendChild(chip);
+        right.appendChild(chev);
+
         header.appendChild(left);
-        header.appendChild(chip);
+        header.appendChild(right);
+
+        const detail = document.createElement("div");
+        detail.className = "detail";
 
         const note = document.createElement("div");
         note.className = "note";
@@ -703,34 +805,39 @@ const schedule = [
 
         footer.appendChild(cost);
 
-// 第一個連結
-if (item.link) {
-  const btn1 = document.createElement("button");
-  btn1.className = "btn-link";
-  btn1.textContent = "地圖 / 連結";
-  btn1.addEventListener("click", (e) => {
-    e.stopPropagation();
-    window.open(item.link, "_blank");
-  });
-  footer.appendChild(btn1);
-}
+        const linkWrap = document.createElement("div");
+        linkWrap.className = "link-wrap";
 
-// 第二個連結
-if (item.link2) {
-  const btn2 = document.createElement("button");
-  btn2.className = "btn-link";
-  btn2.textContent = "官網 / 預約";
-  btn2.addEventListener("click", (e) => {
-    e.stopPropagation();
-    window.open(item.link2, "_blank");
-  });
-  footer.appendChild(btn2);
-}
+        if (Array.isArray(item.links) && item.links.length) {
+          item.links.forEach(l => {
+            const btn = document.createElement("button");
+            btn.className = "btn-link";
+            btn.textContent = l.label || "連結";
+            btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              window.open(l.url, "_blank");
+            });
+            linkWrap.appendChild(btn);
+          });
+        } else {
+          const btn = document.createElement("button");
+          btn.className = "btn-link";
+          btn.textContent = "無連結";
+          btn.disabled = true;
+          linkWrap.appendChild(btn);
+        }
 
+        footer.appendChild(linkWrap);
+
+        detail.appendChild(note);
+        detail.appendChild(footer);
 
         card.appendChild(header);
-        card.appendChild(note);
-        card.appendChild(footer);
+        card.appendChild(detail);
+
+        card.addEventListener("click", () => {
+          card.classList.toggle("collapsed");
+        });
 
         cardContainer.appendChild(card);
       });
@@ -747,6 +854,3 @@ if (item.link2) {
   </script>
 </body>
 </html>
-
-
-
