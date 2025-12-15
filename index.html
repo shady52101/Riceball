@@ -700,21 +700,32 @@ const schedule = [
         cost.className = "cost";
         cost.textContent = item.cost || "";
 
-        const btn = document.createElement("button");
-        btn.className = "btn-link";
-        if (item.link) {
-          btn.textContent = "查看連結";
-          btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            window.open(item.link, "_blank");
-          });
-        } else {
-          btn.textContent = "無連結";
-          btn.disabled = true;
-        }
-
         footer.appendChild(cost);
-        footer.appendChild(btn);
+
+// 第一個連結
+if (item.link) {
+  const btn1 = document.createElement("button");
+  btn1.className = "btn-link";
+  btn1.textContent = "地圖 / 連結";
+  btn1.addEventListener("click", (e) => {
+    e.stopPropagation();
+    window.open(item.link, "_blank");
+  });
+  footer.appendChild(btn1);
+}
+
+// 第二個連結
+if (item.link2) {
+  const btn2 = document.createElement("button");
+  btn2.className = "btn-link";
+  btn2.textContent = "官網 / 預約";
+  btn2.addEventListener("click", (e) => {
+    e.stopPropagation();
+    window.open(item.link2, "_blank");
+  });
+  footer.appendChild(btn2);
+}
+
 
         card.appendChild(header);
         card.appendChild(note);
@@ -735,4 +746,5 @@ const schedule = [
   </script>
 </body>
 </html>
+
 
