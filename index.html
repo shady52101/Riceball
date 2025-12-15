@@ -302,7 +302,7 @@ const schedule = [
     note: "sunset beach hotel 含早餐",
     cost: "已付 4,420 NTD",
     link: [
-      { label: "🛏️ 飯店", url: "https://www.booking.com/hotel/jp/rinkens.zh-tw.html?label=gen173nr-10CAEoggI46AdIM1gEaOcBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALMvf7JBsACAdICJGQ5NzQ4YjJiLWZmNzctNGNhZC05YzUwLTY2YTFjNTg4NDQ3ONgCAeACAQ&sid=cd964aaaec30d382017953a3d6d2383f&aid=304142&checkin=2026-01-09&checkout=2026-01-11&group_adults=2&req_adults=2&no_rooms=1&group_children=1&req_children=1&age=4&req_age=4" },
+      { label: "🛏️ 飯店", url: "https://beachmonpa.co.jp/" },
       { label: "🚗 google map", url: "https://www.google.com/maps/dir/Ryoshi+Shokudo+Obanburumai+Sakana+Daitoryo,+3+Chome-1-17+Minatomachi,+Naha,+Okinawa+900-0001%E6%97%A5%E6%9C%AC/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/@26.2790994,127.6809087,13z/data=!3m2!4b1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m14!4m13!1m5!1m1!1s0x34e56b047c4b65c9:0x3e70d1280ee22c7a!2m2!1d127.6803223!2d26.2436476!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ],
   },
@@ -311,13 +311,13 @@ const schedule = [
     label: "D1 · 1/9",
     time: "20:05–21:25（1小時20分）",
     title: "美國村逛街",
-    category: "逛街",
+    category: "購物",
     note: "",
     cost: "",
     link: [
-    { label: "🛍️ 逛街地圖", url: "https://plumpyblog.com/ryoshi-shokudo/" },
-    { label: "🛍️ 逛街地圖", url: "https://bobbyfun.tw/2024-01-08-2709/" },
-    { label: "🛍️ 逛街地圖", url: "https://okinawa.letsgojp.com/archives/11334/" },
+    { label: "🛍️ 逛街地圖1", url: "https://plumpyblog.com/ryoshi-shokudo/" },
+    { label: "🛍️ 逛街地圖2", url: "https://bobbyfun.tw/2024-01-08-2709/" },
+    { label: "🛍️ 逛街地圖3", url: "https://okinawa.letsgojp.com/archives/11334/" },
     ],
   },
   {
@@ -335,22 +335,26 @@ const schedule = [
   {
     day: "D2",
     label: "D2 · 1/10",
-    time: "08:00–09:00（1小時）",
+    time: "08:30–09:00（30分）",
     title: "飯店",
     category: "用餐",
     note: "飯店早餐",
     cost: "",
-    link: "",
+    link: [
+      { label: "🛏️ 飯店", url: "https://beachmonpa.co.jp/" },
+      ],
   },
   {
     day: "D2",
     label: "D2 · 1/10",
     time: "09:00–09:30（30分）",
-    title: "飯店 > 沖繩兒童王國",
+    title: "飯店 -> 沖繩兒童王國",
     category: "交通",
     note: "",
     cost: "",
-    link: "",
+    link: [
+      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Goya,+5+Chome%E2%88%927+%E6%B2%96%E7%B9%A9%E5%85%92%E7%AB%A5%E7%8E%8B%E5%9C%8B/@26.316697,127.7690274,15z/data=!3m1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m15!4m14!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e512738000a60d:0x8be494fd3bd9ee0b!2m2!1d127.80304!2d26.327691!3e0!5i1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+    ],
   },
   {
     day: "D2",
@@ -358,39 +362,60 @@ const schedule = [
     time: "09:30–12:30（3小時）",
     title: "沖繩兒童王國",
     category: "景點",
-    note: "平日營業時間 : 9:30-17:30\\n假日營業時間 : 9:30-21:00",
-    cost: "成人 1000円\\n小孩 free",
-    link: "https://www.okzm.jp/information-cht/",
+    note: "平日營業時間 : 9:30-17:30\n假日營業時間 : 9:30-21:00",
+    cost: "未付 成人 1,000円\n小孩 free",
+    link: [
+      { label: "🌴 兒童王國", url: "https://www.okzm.jp/information-cht/" },
+      ],
   },
   {
     day: "D2",
     label: "D2 · 1/10",
-    time: "12:30–14:30（2小時）",
+    time: "12:30–13:00（30分）",
+    title: "沖繩兒童王國 -> 美國村",
+    category: "交通",
+    note: "",
+    cost: "",
+    link: [
+      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Goya,+5+Chome%E2%88%927+%E6%B2%96%E7%B9%A9%E5%85%92%E7%AB%A5%E7%8E%8B%E5%9C%8B/@26.316697,127.7690274,15z/data=!3m1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m15!4m14!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e512738000a60d:0x8be494fd3bd9ee0b!2m2!1d127.80304!2d26.327691!3e0!5i1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+    ]
+  },
+
+  {
+    day: "D2",
+    label: "D2 · 1/10",
+    time: "13:00–14:30（1小時30分）",
     title: "午餐+回飯店",
     category: "用餐",
-    note: "AI 推薦 :  ステーキハウス四季（Sunabe）-鐵板牛排\\nAI 推薦 :  鳥と卵の専門店 鳥玉（北谷店）- 親子丼、玉子燒、咖哩\\nAI 推薦 :  やっぱりステーキ（美國村) - 美式餐廳",
+    note: "AI 推薦 :  ステーキハウス四季（Sunabe）-鐵板牛排\nAI 推薦 :  鳥と卵の専門店 鳥玉（北谷店）- 親子丼、玉子燒、咖哩\nAI 推薦 :  やっぱりステーキ（美國村) - 美式餐廳",
     cost: "",
-    link: "",
+    link: [
+      { label: "🍽️ 美食推薦", url: "https://tw.tabiiro.travel/gourmet/article/americanvillage-gourmet/" },
+    ]
   },
+
+  
   {
     day: "D2",
     label: "D2 · 1/10",
     time: "14:30–16:30（2小時）",
     title: "飯店",
-    category: "飯店 / 休息",
-    note: "充電時間",
-    cost: "NTD 4420",
+    category: "休息",
+    note: "充電時間/媽媽自由時間",
+    cost: "",
     link: "",
   },
   {
     day: "D2",
     label: "D2 · 1/10",
     time: "16:30–17:10（40分）",
-    title: "飯店 > 東南植物樂園",
+    title: "飯店 -> 東南植物樂園",
     category: "交通",
     note: "",
     cost: "",
-    link: "",
+    link: [
+      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+8-11+Mihama,+Chatan,+Nakagami+District,+Okinawa+904-0115%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Chibana,+%E6%9D%B1%E5%8D%97%E6%A4%8D%E7%89%A9%E6%A8%82%E5%9C%92/@26.3421377,127.7550494,13.5z/data=!4m14!4m13!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e511d8db9268d7:0x97aa9da99ec7390b!2m2!1d127.8065709!2d26.3755374!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+    ]
   },
   {
     day: "D2",
@@ -398,36 +423,31 @@ const schedule = [
     time: "17:10–19:40（2小時30分）",
     title: "東南植物樂園",
     category: "景點",
-    note: "燈光秀，夜間票17:00~22:00 (當天有日本成人節活動，細節未知)",
-    cost: "成人 2500円\\n小孩 900円",
-    link: "https://www.southeast-botanical.jp/tw/illumination/",
+    note: "燈光秀，夜間票17:00~22:00 \n(當天有日本成人節活動，細節未知)",
+    cost: "未付 成人 2500円/小孩 900円",
+    link: [
+    { label: "🎆 景點資訊", url: "https://www.southeast-botanical.jp/tw/illumination/" },
+    ]
   },
   {
     day: "D2",
     label: "D2 · 1/10",
-    time: "19:40–21:40（2小時）",
+    time: "19:40–20:20（40分）",
+    title: "東南植物樂園 -> 美國村",
+    category: "交通",
+    note: "",
+    cost: "",
+    link: [
+      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+8-11+Mihama,+Chatan,+Nakagami+District,+Okinawa+904-0115%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Chibana,+%E6%9D%B1%E5%8D%97%E6%A4%8D%E7%89%A9%E6%A8%82%E5%9C%92/@26.3421377,127.7550494,13.5z/data=!4m14!4m13!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e511d8db9268d7:0x97aa9da99ec7390b!2m2!1d127.8065709!2d26.3755374!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+    ]
+  },
+  
+  {
+    day: "D2",
+    label: "D2 · 1/10",
+    time: "20:20–21:30（1小時10分）",
     title: "晚餐+回飯店",
     category: "用餐",
-    note: "AI 推薦 : 燒肉琉球の牛（美國村店）- 燒肉 (建議預約)。",
-    cost: "",
-    link: "",
-  },
-  {
-    day: "D3",
-    label: "D3 · 1/11",
-    time: "08:00–09:00（1小時）",
-    title: "飯店",
-    category: "飯店 / 休息",
-    note: "飯店早餐 + check out",
-    cost: "",
-    link: "",
-  },
-  {
-    day: "D3",
-    label: "D3 · 1/11",
-    time: "09:00–10:20（1小時20分）",
-    title: "飯店 > 沖繩世界(玉泉洞)",
-    category: "交通",
     note: "",
     cost: "",
     link: "",
@@ -435,18 +455,54 @@ const schedule = [
   {
     day: "D3",
     label: "D3 · 1/11",
-    time: "10:20–13:20（3小時）",
-    title: "沖繩世界(玉泉洞)",
-    category: "景點",
-    note: "《SUPER EISA太鼓舞》1)10:30 2)12:30 3)14:30　\\n《毒蛇表演》1)11:30 2)13:30 3)15:30\\n辣椒粉必買",
-    cost: "成人 2000円\\n小孩 1000円",
-    link: "https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E4%B8%96%E7%95%8C+%E7%8E%89%E6%B3%89%E6%B4%9E",
+    time: "08:30–09:00（30分）",
+    title: "飯店",
+    category: "用餐",
+    note: "飯店早餐 + check out",
+    cost: "",
+    link: "",
   },
   {
     day: "D3",
     label: "D3 · 1/11",
-    time: "13:20–14:50（1小時30分）",
-    title: "午餐",
+    time: "09:00–10:00（1小時）",
+    title: "飯店 -> 沖繩世界(玉泉洞)",
+    category: "交通",
+    note: "",
+    cost: "",
+    link: [
+      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/%E7%8E%89%E6%B3%89%E6%B4%9E+%E6%97%A5%E6%9C%AC%E3%80%92901-0616+Okinawa,+Nanjo,+Tamagusuku,+Maekawa%E2%88%921336/@26.2289476,127.6742781,12z/data=!4m14!4m13!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e56985519f786b:0x5e9a8bdcd64306dd!2m2!1d127.7494344!2d26.1403423!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+    ]
+  },
+  {
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "10:00–13:00（3小時）",
+    title: "沖繩世界(玉泉洞)",
+    category: "景點",
+    note: "《SUPER EISA太鼓舞》1)10:30 2)12:30 3)14:30\n《毒蛇表演》1)11:30 2)13:30 3)15:30\n辣椒粉必買",
+    cost: "未付 成人 2000円\n未付 n小孩 1000円",
+        link: [
+      { label: "🎶 沖繩世界", url: "https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E4%B8%96%E7%95%8C+%E7%8E%89%E6%B3%89%E6%B4%9E" },
+    ]
+  },
+    {
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "13:00–13:15（15分）",
+    title: "沖繩世界(玉泉洞) -> costco",
+    category: "交通",
+    note: "",
+    cost: "",
+    link: [
+      { label: "🚗 google map", url: "https://www.google.com/maps/dir/%E7%8E%89%E6%B3%89%E6%B4%9E+%E6%97%A5%E6%9C%AC%E3%80%92901-0616+Okinawa,+Nanjo,+Tamagusuku,+Maekawa%E2%88%921336/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E5%8D%97%E5%9F%8E%E5%B8%82+Tsukishiro,+Kakinohana+COSTCO%E5%A5%BD%E5%B8%82%E5%A4%9A+%E6%B2%96%E7%B9%A9%E5%BA%97/@26.1505262,127.7561295,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x34e56985519f786b:0x5e9a8bdcd64306dd!2m2!1d127.7494344!2d26.1403423!1m5!1m1!1s0x34e56f002d5171dd:0x6f86b1ebb56a155c!2m2!1d127.7866429!2d26.1552838!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+    ]
+  },
+  {
+    day: "D3",
+    label: "D3 · 1/11",
+    time: "13:15–14:50（1小時30分）",
+    title: "逛街 + 午餐",
     category: "用餐",
     note: "AI推薦 : 玉家そば 本店（南城) - 沖繩麵\\nAI推薦 : 南部咖啡廳：Cafe やぶさち（海景) - 義大利麵、飯類\\nAI推薦 : 燒肉きんぐ（豐崎) - Outlet 前非常順路",
     cost: "",
@@ -798,6 +854,7 @@ if ("serviceWorker" in navigator) {
   </script>
 </body>
 </html>
+
 
 
 
