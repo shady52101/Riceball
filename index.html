@@ -561,6 +561,7 @@ const schedule = [
     cost: "已付 4.227 NTD",
     link: [
     { label: "🛍️ 逛街攻略1", url: "https://bobbyfun.tw/2024-01-08-2708/" },
+    { label: "🛍️ 逛街攻略2", url: "https://tc.tabirai.net/sightseeing/article/kokusai-street-shopping//" },
     { label: "🍜 美食推薦1", url: "https://www.youtube.com/watch?v=RyfCLurnJNA/" },
     { label: "🍜 美食推薦2", url: "https://www.wendyjourney.com/kokusai-dori-food/" },
     ],
@@ -665,6 +666,19 @@ const schedule = [
     cost: "",
     link: "",
   },
+{
+    day: "info",
+    label: "info",
+    time: "16:55–17:35（40分鐘 時差1小時）",
+    title: "那霸機場➡️桃機T1",
+    category: "交通",
+    note: "AirAsia FD231\n手提7kg*3 託運20kg*3",
+    cost: "",
+    link: "",
+  },
+
+
+  
 ];
 
 function normalizeUrl(raw) {
@@ -795,7 +809,7 @@ function renderCards() {
 
     const chip = document.createElement("div");
     chip.className = "category-chip";
-    chip.textContent = item.category || "行程";
+    chip.textContent = item.category || "行型程";
 
     const chev = document.createElement("div");
     chev.className = "chev";
@@ -871,6 +885,7 @@ if ("serviceWorker" in navigator) {
   </script>
 </body>
 </html>
+
 
 
 
