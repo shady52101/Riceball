@@ -216,6 +216,25 @@
       margin-top: 40px;
       font-size: 14px;
     }
+
+    /* ✅ PWA 安裝按鈕（Android Chrome） */
+    .install-btn {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 9999;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 0;
+      background: linear-gradient(135deg, #ec407a, #ff80ab);
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(233, 30, 99, 0.28);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .install-btn[hidden] { display: none; }
+    .install-btn:disabled { opacity: 0.55; cursor: default; }
   </style>
 </head>
 <body>
@@ -235,6 +254,9 @@
       <div class="empty" id="emptyState" style="display:none;">這一天還沒有安排行程</div>
     </main>
   </div>
+
+  <!-- ✅ 安裝按鈕（可安裝時才會顯示） -->
+  <button id="installBtn" class="install-btn" hidden>⬇️ 安裝 App</button>
 
   <script>
 /**
@@ -682,6 +704,7 @@ const schedule = [
 
 ];
 
+// ===== 下面這段是你原本的 UI 程式碼（保留） =====
 function normalizeUrl(raw) {
   const s = (raw || "").trim();
   if (!s) return "";
@@ -694,7 +717,7 @@ function splitLinkField(linkField) {
   if (!linkField) return [];
   if (Array.isArray(linkField)) return linkField;
   return String(linkField)
-    .split(/\\n|\\r|,\\s*/g)
+    .split(/\n|\r|,\s*/g)
     .map(p => p.trim())
     .filter(Boolean);
 }
@@ -702,7 +725,7 @@ function splitLinkField(linkField) {
 function guessIcon(url) {
   try {
     const u = new URL(url);
-    const host = u.hostname.replace(/^www\\./, "").toLowerCase();
+    const host = u.hostname.replace(/^www\./, "").toLowerCase();
     const full = (host + (u.pathname || "")).toLowerCase();
     if (full.includes("google.com/maps") || full.includes("maps.app.goo.gl") || host.includes("maps")) return "📍";
     if (full.includes("booking") || full.includes("ticket") || full.includes("reserve") || full.includes("trip.com") || full.includes("klook") || full.includes("kkday")) return "🎟️";
@@ -712,9 +735,6 @@ function guessIcon(url) {
   }
 }
 
-// Build item.links (used by UI)
-// - If link is array [{label,url}] => respect label 100%
-// - If link is string => auto label = icon + host
 schedule.forEach(item => {
   const raw = splitLinkField(item.link);
   const links = [];
@@ -724,7 +744,7 @@ schedule.forEach(item => {
       if (!url) return;
       const icon = guessIcon(url);
       let host = "";
-      try { host = new URL(url).hostname.replace(/^www\\./,""); } catch(e) {}
+      try { host = new URL(url).hostname.replace(/^www\./,""); } catch(e) {}
       links.push({ label: `${icon} ${host || "連結"}`, url });
     } else if (v && v.url) {
       const url = normalizeUrl(v.url);
@@ -878,24 +898,48 @@ function renderCards() {
 renderDayTabs();
 renderCards();
 
+// ===== ✅ 這裡開始是「新增/更新」的 PWA 安裝邏輯 =====
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("service-worker.js").catch(() => {});
   });
 }
+
+let deferredPrompt = null;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (installBtn) installBtn.hidden = false;
+});
+
+if (installBtn) {
+  installBtn.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+
+    installBtn.disabled = true;
+    try {
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+    } catch (e) {}
+
+    deferredPrompt = null;
+    installBtn.hidden = true;
+    installBtn.disabled = false;
+  });
+}
+
+window.addEventListener("appinstalled", () => {
+  deferredPrompt = null;
+  if (installBtn) installBtn.hidden = true;
+});
+
+const isStandalone =
+  window.matchMedia("(display-mode: standalone)").matches ||
+  window.navigator.standalone === true;
+
+if (isStandalone && installBtn) installBtn.hidden = true;
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
