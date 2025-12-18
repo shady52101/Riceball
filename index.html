@@ -858,11 +858,23 @@ function renderChecklistPanel(show) {
 
   panel.style.display = "block";
   panel.innerHTML = `
-    <div class="checklist-card">
-      <div class="checklist-title">✅ 準備物品清單</div>
-      <div class="checklist-sub">勾選狀態會自動保存（存在本機瀏覽器）。換手機/清除網站資料會重置。</div>
-      <div id="checklistList"></div>
-      <div class="checklist-actions">
+<div class="checklist-card">
+  <div class="checklist-title" id="checklistHeader" style="cursor:pointer; display:flex; align-items:center; justify-content:space-between;">
+    <span>✅ 準備物品清單</span>
+    <span id="checklistArrow">▸</span>
+  </div>
+  <div class="checklist-sub">勾選狀態會自動保存（存在本機瀏覽器）。換手機/清除網站資料會重置。</div>
+
+  <div id="checklistBody">
+    <div id="checklistList"></div>
+    <div class="checklist-actions">
+      <input id="checklistInput" class="checklist-input" placeholder="新增一個物品（例如：泳衣、拖鞋）" />
+      <button id="checklistAddBtn" class="btn-link" type="button">＋新增</button>
+      <button id="checklistResetBtn" class="btn-ghost" type="button">重置預設</button>
+      <button id="checklistClearBtn" class="btn-danger" type="button">全部取消勾選</button>
+    </div>
+  </div>
+</div>
         <input id="checklistInput" class="checklist-input" placeholder="新增一個物品（例如：泳衣、拖鞋）" />
         <button id="checklistAddBtn" class="btn-link" type="button">＋新增</button>
         <button id="checklistResetBtn" class="btn-ghost" type="button">重置預設</button>
@@ -872,7 +884,32 @@ function renderChecklistPanel(show) {
   `;
 
   const listEl = document.getElementById("checklistList");
+// ===== 收合狀態（預設縮起，並保存）=====
+  const checklistBody = document.getElementById("checklistBody");
+  const checklistHeader = document.getElementById("checklistHeader");
+  const checklistArrow = document.getElementById("checklistArrow");
 
+  const CHECKLIST_OPEN_KEY = "riceball_packing_checklist_open_v1";
+  let checklistOpen = localStorage.getItem(CHECKLIST_OPEN_KEY) === "true"; // 預設 false = 縮起
+
+  function updateChecklistCollapse() {
+    if (!checklistBody) return;
+    checklistBody.style.display = checklistOpen ? "block" : "none";
+    if (checklistArrow) checklistArrow.textContent = checklistOpen ? "▾" : "▸";
+  }
+
+  if (checklistHeader) {
+    checklistHeader.addEventListener("click", () => {
+      checklistOpen = !checklistOpen;
+      localStorage.setItem(CHECKLIST_OPEN_KEY, String(checklistOpen));
+      updateChecklistCollapse();
+    });
+  }
+
+  updateChecklistCollapse();
+
+
+  
   function redrawList() {
     listEl.innerHTML = "";
     packingChecklist.forEach((item, idx) => {
@@ -1122,3 +1159,4 @@ if (isStandalone && installBtn) installBtn.hidden = true;
   </script>
 </body>
 </html>
+
