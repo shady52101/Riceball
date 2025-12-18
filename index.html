@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Okinawa Trip Planner</title>
@@ -12,7 +13,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Okinawa Trip" />
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #ec407a;
@@ -53,6 +56,7 @@
       font-size: 22px;
       font-weight: 800;
       letter-spacing: 0.04em;
+      font-family: "Pacifico", cursive;
     }
     header .subtitle {
       font-size: 13px;
@@ -289,7 +293,7 @@
 
     <main>
       <div class="day-title" id="dayTitle"></div>
-      <div class="timeline checklist-panel" id="checklistPanel" style="display:none;"></div>
+      <div class="checklist-panel" id="checklistPanel" style="display:none;"></div>
       <div class="timeline" id="cardContainer"></div>
       <div class="empty" id="emptyState" style="display:none;">這一天還沒有安排行程</div>
     </main>
@@ -806,7 +810,7 @@ const dayTitleEl = document.getElementById("dayTitle");
 
 let currentDay = days[0] || "D1";
 
-// ===== ✅ 準備物品清單（info 頁，可勾選並保存） =====
+// ===== ✅ Check list（info 頁，可勾選並保存） =====
 const CHECKLIST_STORAGE_KEY = "riceball_packing_checklist_v1";
 
 // 你可以在這裡調整預設清單
@@ -864,8 +868,7 @@ panel.innerHTML = `
 
     <div class="card-header" id="checklistHeader" style="cursor:pointer;">
       <div>
-        <div class="title">✅ 準備物品清單</div>
-        <div class="time">勾選狀態會自動保存（存在本機瀏覽器）。換手機/清除網站資料會重置。</div>
+        <div class="title">✅ CHECK LIST</div>
       </div>
       <div class="right-top">
         <div class="category-chip">info</div>
@@ -1168,4 +1171,5 @@ if (isStandalone && installBtn) installBtn.hidden = true;
   </script>
 </body>
 </html>
+
 
