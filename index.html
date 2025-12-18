@@ -301,6 +301,30 @@
       cursor: pointer;
       white-space: nowrap;
     }
+/* ✅ info 頁：統一卡片尺寸（放在 CSS 最後，蓋過 .card） */
+.info-page .card.info-card{
+  padding: 14px 16px;
+  min-height: 56px;
+  border-radius: 18px;
+}
+
+/* ✅ info 頁：右側 chip + 箭頭對齊 */
+.info-page .card.info-card .right-top{ align-items: center; }
+.info-page .card.info-card .category-chip{
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0;
+}
+.info-page .card.info-card .chev{
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+/* ✅ info 頁：真的對齊（去掉左邊軸線 + 左邊空間 + 圓點） */
+.info-page .timeline{ margin-left: 0; padding-left: 0; }
+.info-page .timeline::before{ display: none; }
+.info-page .dot{ display: none; }
 
   </style>
 </head>
@@ -1259,6 +1283,7 @@ if (isStandalone && installBtn) installBtn.hidden = true;
   </script>
 </body>
 </html>
+
 
 
 
