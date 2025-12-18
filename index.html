@@ -107,6 +107,26 @@
       justify-content: space-between;
       align-items: center;
     }
+    /* ✅ info 頁：統一卡片尺寸 */
+.info-page .info-card {
+  padding: 14px 16px;
+  min-height: 56px;
+  border-radius: 18px;
+}
+    /* ✅ info 頁：統一右側箭頭樣式 */
+.info-page .chev {
+  font-size: 14px;
+  margin-left: 8px;
+  color: rgba(216, 27, 96, 0.75);
+}
+    .info-page .right-top {
+  align-items: center;
+}
+    .info-page .category-chip {
+  height: 22px;
+  display: flex;
+  align-items: center;
+}
     .day-title span { font-size: 12px; opacity: 0.9; }
     .timeline { position: relative; margin-left: 10px; padding-left: 12px; }
 /* ✅ info 頁：隱藏左側時間軸線，讓卡片對齊 */
@@ -931,7 +951,7 @@ function renderChecklistPanel(show) {
   panel.style.display = "block";
 
 panel.innerHTML = `
-  <div class="card collapsed" id="packingCard">
+  <div class="card collapsed info-card" id="packingCard">
     <div class="dot"></div>
 
     <div class="card-header" id="checklistHeader" style="cursor:pointer;">
@@ -1099,7 +1119,7 @@ function renderCards() {
 
   items.forEach(item => {
     const card = document.createElement("div");
-    card.className = "card collapsed";
+    card.className = "card collapsed info-card";
 
     const dot = document.createElement("div");
     dot.className = "dot";
@@ -1239,6 +1259,7 @@ if (isStandalone && installBtn) installBtn.hidden = true;
   </script>
 </body>
 </html>
+
 
 
 
