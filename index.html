@@ -858,22 +858,37 @@ function guessIcon(url) {
 schedule.forEach(item => {
   const raw = splitLinkField(item.link);
   const links = [];
+
   raw.forEach(v => {
+    // 1) link 是字串：當作外部網址
     if (typeof v === "string") {
       const url = normalizeUrl(v);
       if (!url) return;
       const icon = guessIcon(url);
       let host = "";
       try { host = new URL(url).hostname.replace(/^www\./,""); } catch(e) {}
-      links.push({ label: `${icon} ${host || "連結"}`, url });
-    } else if (v && v.url) {
-      const url = normalizeUrl(v.url);
-      if (!url) return;
-      links.push({ label: v.label || (guessIcon(url) + " 連結"), url });
+      links.push({ kind: "url", label: `${icon} ${host || "連結"}`, url });
+      return;
+    }
+
+    // 2) link 是物件：支援 url 或 toDay
+    if (v && typeof v === "object") {
+      if (v.toDay) {
+        links.push({ kind: "nav", label: v.label || "前往", toDay: String(v.toDay) });
+        return;
+      }
+      if (v.url) {
+        const url = normalizeUrl(v.url);
+        if (!url) return;
+        links.push({ kind: "url", label: v.label || (guessIcon(url) + " 連結"), url });
+        return;
+      }
     }
   });
+
   item.links = links;
 });
+
 
 const days = Array.from(new Set(schedule.map(item => item.day)));
 const dayMeta = {};
@@ -1232,10 +1247,26 @@ function renderCards() {
         const btn = document.createElement("button");
         btn.className = "btn-link";
         btn.textContent = l.label || "連結";
-        btn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          window.open(l.url, "_blank");
-        });
+btn.addEventListener("click", (e) => {
+  e.stopPropagation();
+
+  // 內部分頁跳轉
+  if (l.kind === "nav" && l.toDay) {
+    currentDay = l.toDay;
+    renderDayTabs();
+    renderCards();
+
+    // 可選：切到頂部（手機體感比較好）
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+
+  // 外部連結
+  if (l.kind === "url" && l.url) {
+    window.open(l.url, "_blank");
+  }
+});
+
         linkWrap.appendChild(btn);
       });
     } else {
@@ -1311,6 +1342,7 @@ if (isStandalone && installBtn) installBtn.hidden = true;
   </script>
 </body>
 </html>
+
 
 
 
