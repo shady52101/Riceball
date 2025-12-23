@@ -377,9 +377,10 @@ const schedule = [
     time: "15:55–17:55（2小時）",
     title: "那霸機場➡️租車公司",
     category: "交通",
-    note: "入境審查 + 租車公司接送 + 租車\n行腳租車 (Pin code : 63512871)\n<<如果時間提早，放棄漁師食堂，直衝東南植物樂園>>",
+    note: "入境審查 + 租車公司接送 + 租車\n行腳租車 (Pin code : 63512871)\n<<如果時間夠早，放棄漁師食堂，走 Plan B>>",
     cost: "未付 18.090円\n已付  2,010円",
     link: [
+      { label: "Plan B", toDay: "info" },
       { label: "🚌 接駁車位置", url: "https://youtube.com/watch?v=iAl8v1AAcjM&embeds_referring_euri=https%3A%2F%2Ffootprint-rentacar.com%2F&source_ve_path=OTY3MTQ/" },
     ],
   },
@@ -824,7 +825,16 @@ const schedule = [
     { label: "sundrug", url: "https://www.taxfreeshops.jp/zhtw/tieup/4" },
     ],
   },
-
+    {
+    day: "info",
+    label: "info",
+    time: "",
+    title: "Plan B",
+    category: "",
+    note: "D1 : 租車公司 -> 東南植物樂園 -> 飯店\nD2 : 飯店 -> AEON 夢樂城 -> 美國村\nD3 : 飯店 -> 中城公園 -> 午餐 -> 玉泉洞 -> costco -> 國際通",
+    cost: "",
+    link:: "",
+  }
 ];
 
 // ===== 下面這段是你原本的 UI 程式碼（保留） =====
@@ -1345,6 +1355,7 @@ if (isStandalone && installBtn) installBtn.hidden = true;
   </script>
 </body>
 </html>
+
 
 
 
