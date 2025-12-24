@@ -330,9 +330,16 @@
 </head>
 <body>
   <div class="app">
-    <header>
-      <h1>Okinawa Trip</h1>
-      <div class="subtitle">沖繩衝衝衝</div>
+<header style="display: flex; justify-content: space-between; align-items: flex-start;">
+      <div>
+        <h1>Okinawa Trip</h1>
+        <div class="subtitle" id="currentPlanText">沖繩衝衝衝 (Plan A)</div>
+      </div>
+      <button onclick="togglePlan()" id="planBtn" style="
+        padding: 6px 12px; border-radius: 999px; border: 1px solid white;
+        background: rgba(255,255,255,0.2); color: white; font-size: 12px;
+        font-weight: bold; cursor: pointer; margin-top: 4px;
+      ">切換 Plan B</button>
     </header>
 
     <div class="day-tabs-wrap">
@@ -357,6 +364,8 @@
  * 1) 字串（可用 \\n 放多個網址）=> 會自動產生「icon + 網站名」
  * 2) 陣列 [{ label, url }, ...] => 你給什麼名字就顯示什麼名字（icon 你也可以自己寫進 label）
  */
+    let currentPlan = "A";
+let currentDay = "D1";
 const schedule = [
   {
     day: "D1",
@@ -1182,7 +1191,11 @@ function renderDayTabs() {
 function renderCards() {
   // info 頁顯示準備物品清單
   renderChecklistPanel(currentDay === "info");
-  const items = schedule.filter(item => item.day === currentDay);
+  // --- 修改這一段 ---
+  const items = schedule.filter(item => 
+    item.day === currentDay && (!item.plan || item.plan === currentPlan)
+  );
+  // -----------------
   cardContainer.innerHTML = "";
 
   const label = dayMeta[currentDay] || currentDay;
@@ -1352,9 +1365,21 @@ const isStandalone =
   window.navigator.standalone === true;
 
 if (isStandalone && installBtn) installBtn.hidden = true;
+    // 新增切換按鈕的執行邏輯
+function togglePlan() {
+  currentPlan = (currentPlan === "A") ? "B" : "A";
+  
+  // 更新介面顯示
+  document.getElementById("currentPlanText").innerText = `沖繩衝衝衝 (Plan ${currentPlan})`;
+  document.getElementById("planBtn").innerText = `切換 Plan ${currentPlan === 'A' ? 'B' : 'A'}`;
+  
+  // 重新渲染卡片
+  renderCards(); 
+}
   </script>
 </body>
 </html>
+
 
 
 
