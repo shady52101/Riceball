@@ -107,13 +107,13 @@
       justify-content: space-between;
       align-items: center;
     }
-    /* ✅ info 頁：統一卡片尺寸 */
+    /* ? info 頁：統一卡片尺寸 */
 .info-page .info-card {
   padding: 14px 16px;
   min-height: 56px;
   border-radius: 18px;
 }
-    /* ✅ info 頁：統一右側箭頭樣式 */
+    /* ? info 頁：統一右側箭頭樣式 */
 .info-page .chev {
   font-size: 14px;
   margin-left: 8px;
@@ -129,7 +129,7 @@
 }
     .day-title span { font-size: 12px; opacity: 0.9; }
     .timeline { position: relative; margin-left: 10px; padding-left: 12px; }
-/* ✅ info 頁：隱藏左側時間軸線，讓卡片對齊 */
+/* ? info 頁：隱藏左側時間軸線，讓卡片對齊 */
 .info-page .timeline::before {
   display: none;
 }
@@ -245,7 +245,7 @@
       font-size: 14px;
     }
 
-    /* ✅ PWA 安裝按鈕（Android Chrome） */
+    /* ? PWA 安裝按鈕（Android Chrome） */
     .install-btn {
       position: fixed;
       right: 16px;
@@ -264,7 +264,7 @@
     .install-btn[hidden] { display: none; }
     .install-btn:disabled { opacity: 0.55; cursor: default; }
   
-    /* ✅ 準備物品清單（info頁） */
+    /* ? 準備物品清單（info頁） */
     .checklist-panel { margin: 8px 4px 14px; }
     .checklist-card {
       background: var(--card-bg);
@@ -301,14 +301,14 @@
       cursor: pointer;
       white-space: nowrap;
     }
-/* ✅ info 頁：統一卡片尺寸（放在 CSS 最後，蓋過 .card） */
+/* ? info 頁：統一卡片尺寸（放在 CSS 最後，蓋過 .card） */
 .info-page .card.info-card{
   padding: 14px 16px;
   min-height: 56px;
   border-radius: 18px;
 }
 
-/* ✅ info 頁：右側 chip + 箭頭對齊 */
+/* ? info 頁：右側 chip + 箭頭對齊 */
 .info-page .card.info-card .right-top{ align-items: center; }
 .info-page .card.info-card .category-chip{
   height: 22px;
@@ -321,7 +321,7 @@
   margin-left: 8px;
 }
 
-/* ✅ info 頁：真的對齊（去掉左邊軸線 + 左邊空間 + 圓點） */
+/* ? info 頁：真的對齊（去掉左邊軸線 + 左邊空間 + 圓點） */
 .info-page .timeline{ margin-left: 0; padding-left: 0; }
 .info-page .timeline::before{ display: none; }
 .info-page .dot{ display: none; }
@@ -347,12 +347,12 @@
     </main>
   </div>
 
-  <!-- ✅ 安裝按鈕（可安裝時才會顯示） -->
-  <button id="installBtn" class="install-btn" hidden>⬇️ 安裝 App</button>
+  <!-- ? 安裝按鈕（可安裝時才會顯示） -->
+  <button id="installBtn" class="install-btn" hidden>?? 安裝 App</button>
 
   <script>
 /**
- * ✅ 連結自由命名規則（你只要改這裡）
+ * ? 連結自由命名規則（你只要改這裡）
  * link 可以是：
  * 1) 字串（可用 \\n 放多個網址）=> 會自動產生「icon + 網站名」
  * 2) 陣列 [{ label, url }, ...] => 你給什麼名字就顯示什麼名字（icon 你也可以自己寫進 label）
@@ -362,39 +362,38 @@ const schedule = [
     day: "D1",
     label: "D1 · 1/9",
     time: "13:25–15:55（2小時30分 時差1小時）",
-    title: "桃機T1➡️那霸機場",
+    title: "桃機T1??那霸機場",
     category: "交通",
     note: "AirAsia FD230\n手提7kg*3 託運20kg*2\n國際線4F或是國內線1F有豬肉蛋飯糰",
     cost: "已付 18,262 NTD (來回)",
     link: [
-      { label: "✈️ Visit Japan Web", url: "https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/" },
-      { label: "🍙 豬肉蛋飯糰介紹", url: "https://hanblog.tw/porktamago/" }
+      { label: "?? Visit Japan Web", url: "https://services.digital.go.jp/zh-cmn-hant/visit-japan-web/" },
+      { label: "?? 豬肉蛋飯糰介紹", url: "https://hanblog.tw/porktamago/" }
     ],
   },
   {
     day: "D1",
     label: "D1 · 1/9",
     time: "15:55–17:55（2小時）",
-    title: "那霸機場➡️租車公司",
+    title: "那霸機場??租車公司",
     category: "交通",
-    note: "入境審查 + 租車公司接送 + 租車\n行腳租車 (Pin code : 63512871)\n<<如果時間夠早，放棄漁師食堂，走 ⭐Plan B>>",
-    cost: "未付 18.090円\n已付  2,010円",
+    note: "入境審查 + 租車公司接送 + 租車\n行腳租車 (Pin code : 63512871)\n<<如果時間夠早，放棄漁師食堂，走 ?Plan B>>",
+    cost: "未付 18.090?\n已付  2,010?",
     link: [
-      { label: "⭐Plan B", toDay: "info" },
-      { label: "🚌 接駁車位置", url: "https://youtube.com/watch?v=iAl8v1AAcjM&embeds_referring_euri=https%3A%2F%2Ffootprint-rentacar.com%2F&source_ve_path=OTY3MTQ/" },
+      { label: "?Plan B", toDay: "info" },
+      { label: "?? 接駁車位置", url: "https://youtube.com/watch?v=iAl8v1AAcjM&embeds_referring_euri=https%3A%2F%2Ffootprint-rentacar.com%2F&source_ve_path=OTY3MTQ/" },
     ],
   },
   {
     day: "D1",
     label: "D1 · 1/9",
     time: "17:55–18:25（30分）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
-    note: "租車公司 -> 漁師食堂 大ばんぶる舞 さかな大統",
+    note: "租車公司 -> 漁師食堂 大??????舞 ???大統",
     cost: "",
     link: [
-      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Okinawaangya+Car+Rental,+3+Chome-8-11+Kanagusuku,+Naha,+Okinawa+901-0155%E6%97%A5%E6%9C%AC/Ryoshi+Shokudo+Obanburumai+Sakana+Daitoryo,+3+Chome-1-17+Minatomachi,+Naha,+Okinawa+900-0001%E6%97%A5%E6%9C%AC/@26.2267077,127.7007522,13.42z/data=!3m1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m15!4m14!1m5!1m1!1s0x34e569dca4935975:0xf7655eeca9dc26ba!2m2!1d127.6621154!2d26.2011231!1m5!1m1!1s0x34e56b047c4b65c9:0x3e70d1280ee22c7a!2m2!1d127.6803223!2d26.2436476!3e0!5i1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-      { label: "🚀 直接導航", url: "https://maps.app.goo.gl/vJq96p6n9pYfA8B88/" },
+      { label: "?? google map", url: "https://www.google.com/maps/dir/Okinawaangya+Car+Rental,+3+Chome-8-11+Kanagusuku,+Naha,+Okinawa+901-0155%E6%97%A5%E6%9C%AC/Ryoshi+Shokudo+Obanburumai+Sakana+Daitoryo,+3+Chome-1-17+Minatomachi,+Naha,+Okinawa+900-0001%E6%97%A5%E6%9C%AC/@26.2267077,127.7007522,13.42z/data=!3m1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m15!4m14!1m5!1m1!1s0x34e569dca4935975:0xf7655eeca9dc26ba!2m2!1d127.6621154!2d26.2011231!1m5!1m1!1s0x34e56b047c4b65c9:0x3e70d1280ee22c7a!2m2!1d127.6803223!2d26.2436476!3e0!5i1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ],
   },
   {
@@ -403,24 +402,23 @@ const schedule = [
     time: "18:25–19:25（1小時）",
     title: "晚餐",
     category: "用餐",
-    note: "漁師食堂 大ばんぶる舞 さかな大統\n大份量丼飯/鰻魚飯",
+    note: "漁師食堂 大??????舞 ???大統\n大份量丼飯/鰻魚飯",
     cost: "",
     link: [
-      { label: "🍣 餐廳介紹", url: "https://plumpyblog.com/ryoshi-shokudo/" },
+      { label: "?? 餐廳介紹", url: "https://plumpyblog.com/ryoshi-shokudo/" },
     ],
   },
   {
     day: "D1",
     label: "D1 · 1/9",
     time: "19:25–20:05（40分）",
-    title: " ⬇️",
+    title: " ??",
     category: "交通",
     note: "晚餐 -> sunset beach hotel (含早餐)",
     cost: "已付 4,420 NTD",
     link: [
-      { label: "🛏️ 飯店", url: "https://beachmonpa.co.jp/" },
-      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Ryoshi+Shokudo+Obanburumai+Sakana+Daitoryo,+3+Chome-1-17+Minatomachi,+Naha,+Okinawa+900-0001%E6%97%A5%E6%9C%AC/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/@26.2790994,127.6809087,13z/data=!3m2!4b1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m14!4m13!1m5!1m1!1s0x34e56b047c4b65c9:0x3e70d1280ee22c7a!2m2!1d127.6803223!2d26.2436476!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-      { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/Ryoshi+Shokudo+Obanburumai+Sakana+Daitoryo,+3+Chome-1-17+Minatomachi,+Naha,+Okinawa+900-0001%E6%97%A5%E6%9C%AC/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/@26.2790994,127.6809087,13z/data=!3m2!4b1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m14!4m13!1m5!1m1!1s0x34e56b047c4b65c9:0x3e70d1280ee22c7a!2m2!1d127.6803223!2d26.2436476!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+      { label: "??? 飯店", url: "https://beachmonpa.co.jp/" },
+      { label: "?? google map", url: "https://www.google.com/maps/dir/Ryoshi+Shokudo+Obanburumai+Sakana+Daitoryo,+3+Chome-1-17+Minatomachi,+Naha,+Okinawa+900-0001%E6%97%A5%E6%9C%AC/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/@26.2790994,127.6809087,13z/data=!3m2!4b1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m14!4m13!1m5!1m1!1s0x34e56b047c4b65c9:0x3e70d1280ee22c7a!2m2!1d127.6803223!2d26.2436476!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ],
   },
   {
@@ -432,9 +430,9 @@ const schedule = [
     note: "",
     cost: "",
     link: [
-    { label: "🛍️ 逛街攻略1", url: "https://www.gltjp.com/zh-hant/article/item/21095/" },
-    { label: "🛍️ 逛街攻略2", url: "https://bobbyfun.tw/2024-01-08-2709/" },
-    { label: "🛍️ 逛街攻略3", url: "https://okinawa.letsgojp.com/archives/11334/" },
+    { label: "??? 逛街攻略1", url: "https://www.gltjp.com/zh-hant/article/item/21095/" },
+    { label: "??? 逛街攻略2", url: "https://bobbyfun.tw/2024-01-08-2709/" },
+    { label: "??? 逛街攻略3", url: "https://okinawa.letsgojp.com/archives/11334/" },
     ],
   },
   {
@@ -445,8 +443,8 @@ const schedule = [
     category: "購物",
     note: "媽媽時間\n超市到 23:00 商店到22:00",
     cost: "",
-      link: [
-    { label: "🛍️ 逛街攻略", url: "https://bobowin.blog/aeon-american/" },
+     link: [
+    { label: "??? 逛街攻略", url: "https://bobowin.blog/aeon-american/" },
     ],
   }, 
   {
@@ -458,20 +456,19 @@ const schedule = [
     note: "飯店早餐",
     cost: "",
     link: [
-      { label: "🛏️ 飯店", url: "https://beachmonpa.co.jp/" },
+      { label: "??? 飯店", url: "https://beachmonpa.co.jp/" },
       ],
   },
   {
     day: "D2",
     label: "D2 · 1/10",
     time: "09:00–09:30（30分）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
     note: "飯店 -> 沖繩兒童王國",
     cost: "",
     link: [
-      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Goya,+5+Chome%E2%88%927+%E6%B2%96%E7%B9%A9%E5%85%92%E7%AB%A5%E7%8E%8B%E5%9C%8B/@26.316697,127.7690274,15z/data=!3m1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m15!4m14!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e512738000a60d:0x8be494fd3bd9ee0b!2m2!1d127.80304!2d26.327691!3e0!5i1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-      { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Goya,+5+Chome%E2%88%927+%E6%B2%96%E7%B9%A9%E5%85%92%E7%AB%A5%E7%8E%8B%E5%9C%8B/@26.316697,127.7690274,15z/data=!3m1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m15!4m14!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e512738000a60d:0x8be494fd3bd9ee0b!2m2!1d127.80304!2d26.327691!3e0!5i1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+      { label: "?? google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Goya,+5+Chome%E2%88%927+%E6%B2%96%E7%B9%A9%E5%85%92%E7%AB%A5%E7%8E%8B%E5%9C%8B/@26.316697,127.7690274,15z/data=!3m1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m15!4m14!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e512738000a60d:0x8be494fd3bd9ee0b!2m2!1d127.80304!2d26.327691!3e0!5i1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ],
   },
   {
@@ -481,36 +478,38 @@ const schedule = [
     title: "沖繩兒童王國",
     category: "景點",
     note: "平日營業時間 : 9:30-17:30\n假日營業時間 : 9:30-21:00",
-    cost: "未付 成人 1,000円 / 小孩 free",
+    cost: "未付 成人 1,000? / 小孩 free",
     link: [
-      { label: "🌴 兒童王國", url: "https://www.okzm.jp/information-cht/" },
+      { label: "?? 兒童王國", url: "https://www.okzm.jp/information-cht/" },
       ],
   },
   {
     day: "D2",
     label: "D2 · 1/10",
     time: "12:30–13:00（30分）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
     note: "沖繩兒童王國 -> 美國村",
     cost: "",
     link: [
-      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Goya,+5+Chome%E2%88%927+%E6%B2%96%E7%B9%A9%E5%85%92%E7%AB%A5%E7%8E%8B%E5%9C%8B/@26.316697,127.7690274,15z/data=!3m1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m15!4m14!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e512738000a60d:0x8be494fd3bd9ee0b!2m2!1d127.80304!2d26.327691!3e0!5i1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-      { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Goya,+5+Chome%E2%88%927+%E6%B2%96%E7%B9%A9%E5%85%92%E7%AB%A5%E7%8E%8B%E5%9C%8B/@26.316697,127.7690274,15z/data=!3m1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m15!4m14!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e512738000a60d:0x8be494fd3bd9ee0b!2m2!1d127.80304!2d26.327691!3e0!5i1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+      { label: "?? google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Goya,+5+Chome%E2%88%927+%E6%B2%96%E7%B9%A9%E5%85%92%E7%AB%A5%E7%8E%8B%E5%9C%8B/@26.316697,127.7690274,15z/data=!3m1!5s0x34e569b7a599cbfd:0x91d234b6c3aa40f1!4m15!4m14!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e512738000a60d:0x8be494fd3bd9ee0b!2m2!1d127.80304!2d26.327691!3e0!5i1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ]
   },
+
   {
     day: "D2",
     label: "D2 · 1/10",
     time: "13:00–14:30（1小時30分）",
     title: "美國村午餐",
     category: "用餐",
-    note: "AI 推薦 :  ステーキハウス四季（Sunabe）-鐵板牛排\nAI 推薦 :  鳥と卵の専門店 鳥玉（北谷店）- 親子丼、玉子燒、咖哩\nAI 推薦 :  やっぱりステーキ（美國村) - 美式餐廳",
+    note: "AI 推薦 :  ???????四季（Sunabe）-鐵板牛排\nAI 推薦 :  鳥?卵??門店 鳥玉（北谷店）- 親子丼、玉子燒、咖哩\nAI 推薦 :  ????????（美國村) - 美式餐廳",
     cost: "",
     link: [
-      { label: "🍽️ 美食推薦", url: "https://tw.tabiiro.travel/gourmet/article/americanvillage-gourmet/" },
+      { label: "??? 美食推薦", url: "https://tw.tabiiro.travel/gourmet/article/americanvillage-gourmet/" },
     ]
   },
+
+  
   {
     day: "D2",
     label: "D2 · 1/10",
@@ -525,13 +524,12 @@ const schedule = [
     day: "D2",
     label: "D2 · 1/10",
     time: "16:30–17:10（40分）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
     note: "飯店 -> 東南植物樂園",
     cost: "",
     link: [
-      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+8-11+Mihama,+Chatan,+Nakagami+District,+Okinawa+904-0115%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Chibana,+%E6%9D%B1%E5%8D%97%E6%A4%8D%E7%89%A9%E6%A8%82%E5%9C%92/@26.3421377,127.7550494,13.5z/data=!4m14!4m13!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e511d8db9268d7:0x97aa9da99ec7390b!2m2!1d127.8065709!2d26.3755374!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-      { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+8-11+Mihama,+Chatan,+Nakagami+District,+Okinawa+904-0115%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Chibana,+%E6%9D%B1%E5%8D%97%E6%A4%8D%E7%89%A9%E6%A8%82%E5%9C%92/@26.3421377,127.7550494,13.5z/data=!4m14!4m13!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e511d8db9268d7:0x97aa9da99ec7390b!2m2!1d127.8065709!2d26.3755374!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+      { label: "?? google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+8-11+Mihama,+Chatan,+Nakagami+District,+Okinawa+904-0115%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Chibana,+%E6%9D%B1%E5%8D%97%E6%A4%8D%E7%89%A9%E6%A8%82%E5%9C%92/@26.3421377,127.7550494,13.5z/data=!4m14!4m13!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e511d8db9268d7:0x97aa9da99ec7390b!2m2!1d127.8065709!2d26.3755374!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ]
   },
   {
@@ -541,35 +539,36 @@ const schedule = [
     title: "東南植物樂園",
     category: "景點",
     note: "當日成人節活動，僅售一日票 \n火焰與光之舞台-雷射火焰秀 : 18:30",
-    cost: "未付 成人 2850円/小孩 1200円",
+    cost: "未付 成人 2850?/小孩 1200?",
     link: [
-    { label: "🎆 景點資訊", url: "https://www.southeast-botanical.jp/christmas_newyear/" },
+    { label: "?? 景點資訊", url: "https://www.southeast-botanical.jp/christmas_newyear/" },
     ]
   },
   {
     day: "D2",
     label: "D2 · 1/10",
     time: "19:40–20:20（40分）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
     note: "東南植物樂園 -> 美國村\n公共停車場 前兩小時免費",
     cost: "",
     link: [
-      { label: "🚗 google map", url: "https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Chibana,+%E6%9D%B1%E5%8D%97%E6%A4%8D%E7%89%A9%E6%A8%82%E5%9C%92/Kitatanifissharina+Dai+2+Kokyo+Parking+Lot,+36+Mihama,+Chatan,+Nakagami+District,+Okinawa+904-0115%E6%97%A5%E6%9C%AC/@26.3293702,127.7574764,15.75z/data=!4m14!4m13!1m5!1m1!1s0x34e511d8db9268d7:0x97aa9da99ec7390b!2m2!1d127.8065709!2d26.3755374!1m5!1m1!1s0x34e513681979367b:0xb5c105ff569d5315!2m2!1d127.754586!2d26.320947!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-      { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Chibana,+%E6%9D%B1%E5%8D%97%E6%A4%8D%E7%89%A9%E6%A8%82%E5%9C%92/Kitatanifissharina+Dai+2+Kokyo+Parking+Lot,+36+Mihama,+Chatan,+Nakagami+District,+Okinawa+904-0115%E6%97%A5%E6%9C%AC/@26.3293702,127.7574764,15.75z/data=!4m14!4m13!1m5!1m1!1s0x34e511d8db9268d7:0x97aa9da99ec7390b!2m2!1d127.8065709!2d26.3755374!1m5!1m1!1s0x34e513681979367b:0xb5c105ff569d5315!2m2!1d127.754586!2d26.320947!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+      { label: "?? google map", url: "https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%B2%96%E7%B9%A9%E5%B8%82+Chibana,+%E6%9D%B1%E5%8D%97%E6%A4%8D%E7%89%A9%E6%A8%82%E5%9C%92/Kitatanifissharina+Dai+2+Kokyo+Parking+Lot,+36+Mihama,+Chatan,+Nakagami+District,+Okinawa+904-0115%E6%97%A5%E6%9C%AC/@26.3293702,127.7574764,15.75z/data=!4m14!4m13!1m5!1m1!1s0x34e511d8db9268d7:0x97aa9da99ec7390b!2m2!1d127.8065709!2d26.3755374!1m5!1m1!1s0x34e513681979367b:0xb5c105ff569d5315!2m2!1d127.754586!2d26.320947!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ]
   },
+  
   {
     day: "D2",
     label: "D2 · 1/10",
     time: "20:30–22:30（2小時00分）",
     title: "美國村晚餐",
     category: "用餐",
-    note: "琉球の牛 20:30 \n 預約代碼 : P3F4H3 ",
+    note: "琉球?牛 20:30 \n 預約代碼 : P3F4H3 ",
     cost: "",
     link: [
-    { label: "🥩 琉球の牛", url: "https://lailai-web.com/ryukyu-no-ushi-chatan/" },
-    { label: "🥩 預約頁面", url: "https://www.tablecheck.com/zh-TW/reservations/P3F4H3?prev_action=reserve/" },
+    { label: "?? 琉球?牛", url: "https://lailai-web.com/ryukyu-no-ushi-chatan/" },
+    { label: "?? 預約頁面", url: "https://www.tablecheck.com/zh-TW/reservations/P3F4H3?prev_action=reserve/" },
+      
     ]
   },
   {
@@ -586,13 +585,12 @@ const schedule = [
     day: "D3",
     label: "D3 · 1/11",
     time: "09:30–10:00（30分）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
     note: "飯店 -> 永旺夢樂城",
     cost: "",
     link: [
-      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/AEON+MALL+Okinawa+Rycom,+1%E7%95%AA%E5%9C%B0+Raikamu,+Kitanakagusuku,+Nakagami+District,+Okinawa+901-2306%E6%97%A5%E6%9C%AC/@26.2980708,127.7892839,14.21z/data=!4m14!4m13!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e5126214d2f427:0xcb2e803176e4f16b!2m2!1d127.7966025!2d26.3137504!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-      { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/AEON+MALL+Okinawa+Rycom,+1%E7%95%AA%E5%9C%B0+Raikamu,+Kitanakagusuku,+Nakagami+District,+Okinawa+901-2306%E6%97%A5%E6%9C%AC/@26.2980708,127.7892839,14.21z/data=!4m14!4m13!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e5126214d2f427:0xcb2e803176e4f16b!2m2!1d127.7966025!2d26.3137504!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+      { label: "?? google map", url: "https://www.google.com/maps/dir/Sunset+Beach+Hotel,+Mihama,+%E5%8C%97%E8%B0%B7%E7%94%BA%E6%B2%96%E7%B9%A9%E7%B8%A3%E6%97%A5%E6%9C%AC/AEON+MALL+Okinawa+Rycom,+1%E7%95%AA%E5%9C%B0+Raikamu,+Kitanakagusuku,+Nakagami+District,+Okinawa+901-2306%E6%97%A5%E6%9C%AC/@26.2980708,127.7892839,14.21z/data=!4m14!4m13!1m5!1m1!1s0x34e5131000bf5917:0xfd9aa7dd159e858c!2m2!1d127.7556197!2d26.3147997!1m5!1m1!1s0x34e5126214d2f427:0xcb2e803176e4f16b!2m2!1d127.7966025!2d26.3137504!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ]
   },
   {
@@ -601,27 +599,26 @@ const schedule = [
     time: "10:00–13:00（3小時）",
     title: "永旺夢樂城",
     category: "購物 + 用餐",
-    note: "1F Pokémon, 3COINS+, LOFT\n3F bic camera, ABC-MART",
+    note: "1F Pokemon, 3COINS+, LOFT\n3F bic camera, ABC-MART",
     cost: "",
-      link: [
-    { label: "🎟️ Coupon", toDay: "info" }, 
-    { label: "🏷️ 退稅", url: "https://www.funliday.com/posts/aeon-mall-okinawa-ryoom/" },
-    { label: "🛍️ 商場資訊", url: "https://tw.aeonmall.global/mall/okinawarycom/food-drink/" },
-    { label: "🛍️ 逛街攻略", url: "https://bobbyfun.tw/2024-01-07-2699/" },
-    { label: "🎠 兒童設施", url: "https://boysmom.life/2017-08-24-117/" },      
-      ],
+     link: [
+    { label: "??? Coupon", toDay: "info" }, 
+    { label: "??? 退稅", url: "https://www.funliday.com/posts/aeon-mall-okinawa-ryoom/" },
+    { label: "??? 商場資訊", url: "https://tw.aeonmall.global/mall/okinawarycom/food-drink/" },
+    { label: "??? 逛街攻略", url: "https://bobbyfun.tw/2024-01-07-2699/" },
+    { label: "?? 兒童設施", url: "https://boysmom.life/2017-08-24-117/" },     
+     ],
   }, 
   {
     day: "D3",
     label: "D3 · 1/11",
     time: "13:00–13:50（50分）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
     note: "永旺夢樂城-> 沖繩世界(玉泉洞)\n小弟睡覺時間",
     cost: "",
     link: [
-      { label: "🚗 google map", url: "https://www.google.com/maps/dir/AEON+MALL+Okinawa+Rycom,+1%E7%95%AA%E5%9C%B0+Raikamu,+Kitanakagusuku,+Nakagami+District,+Okinawa+901-2306%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E5%8D%97%E5%9F%8E%E5%B8%82+Tamagusuku,+Maekawa+%E7%8E%89%E6%B3%89%E6%B4%9E/@26.2276119,127.6791699,12z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x34e5126214d2f427:0xcb2e803176e4f16b!2m2!1d127.7966025!2d26.3137504!1m5!1m1!1s0x34e56985519f786b:0x5e9a8bdcd64306dd!2m2!1d127.7494344!2d26.1403423!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-      { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/AEON+MALL+Okinawa+Rycom,+1%E7%95%AA%E5%9C%B0+Raikamu,+Kitanakagusuku,+Nakagami+District,+Okinawa+901-2306%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E5%8D%97%E5%9F%8E%E5%B8%82+Tamagusuku,+Maekawa+%E7%8E%89%E6%B3%89%E6%B4%9E/@26.2276119,127.6791699,12z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x34e5126214d2f427:0xcb2e803176e4f16b!2m2!1d127.7966025!2d26.3137504!1m5!1m1!1s0x34e56985519f786b:0x5e9a8bdcd64306dd!2m2!1d127.7494344!2d26.1403423!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+      { label: "?? google map", url: "https://www.google.com/maps/dir/AEON+MALL+Okinawa+Rycom,+1%E7%95%AA%E5%9C%B0+Raikamu,+Kitanakagusuku,+Nakagami+District,+Okinawa+901-2306%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E5%8D%97%E5%9F%8E%E5%B8%82+Tamagusuku,+Maekawa+%E7%8E%89%E6%B3%89%E6%B4%9E/@26.2276119,127.6791699,12z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x34e5126214d2f427:0xcb2e803176e4f16b!2m2!1d127.7966025!2d26.3137504!1m5!1m1!1s0x34e56985519f786b:0x5e9a8bdcd64306dd!2m2!1d127.7494344!2d26.1403423!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ]
   },
   {
@@ -631,23 +628,22 @@ const schedule = [
     title: "沖繩世界(玉泉洞)",
     category: "景點",
     note: "太鼓表演》(1)10:30 (2)12:30 (3)14:30\n毒蛇表演 (1)11:30 (2)13:30 (3)15:30\n辣椒粉必買\n珊瑚烘焙的 35coffee",
-    cost: "未付 成人 2,000円, 小孩 1,000円",
+    cost: "未付 成人 2,000?, 小孩 1,000?",
         link: [
-      { label: "🎶 沖繩世界", url: "https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E4%B8%96%E7%95%8C+%E7%8E%89%E6%B3%89%E6%B4%9E" },
-      { label: "☕ 35 咖啡", url: "https://okinawa.letsgojp.com/archives/23589/" },
+      { label: "?? 沖繩世界", url: "https://www.google.com/search?q=%E6%B2%96%E7%B9%A9%E4%B8%96%E7%95%8C+%E7%8E%89%E6%B3%89%E6%B4%9E" },
+      { label: "? 35 咖啡", url: "https://okinawa.letsgojp.com/archives/23589/" },
     ]
   },
     {
     day: "D3",
     label: "D3 · 1/11",
     time: "16:50–17:00（10分）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
     note: "沖繩世界(玉泉洞) -> costco\n時間足夠可以繞去知念岬公園看海景",
     cost: "",
     link: [
-      { label: "🚗 google map", url: "https://www.google.com/maps/dir/Okinawasoba-Kintarou,+%E3%81%B5%E3%81%AA%E3%81%93%E3%81%97%E3%82%A2%E3%83%91%E3%83%BC%E3%83%88+Funakoshi-1197+Tamagusuku,+Nanjo,+Okinawa+901-0618%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E5%8D%97%E5%9F%8E%E5%B8%82+Tsukishiro,+Kakinohana+COSTCO%E5%A5%BD%E5%B8%82%E5%A4%9A+%E6%B2%96%E7%B9%A9%E5%BA%97/@26.1500059,127.7631814,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x34e56f12041e81c3:0xb1f12121b0b040c5!2m2!1d127.755329!2d26.1489297!1m5!1m1!1s0x34e56f002d5171dd:0x6f86b1ebb56a155c!2m2!1d127.7866429!2d26.1552838!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-      { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/Okinawasoba-Kintarou,+%E3%81%B5%E3%81%AA%E3%81%93%E3%81%97%E3%82%A2%E3%83%91%E3%83%BC%E3%83%88+Funakoshi-1197+Tamagusuku,+Nanjo,+Okinawa+901-0618%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E5%8D%97%E5%9F%8E%E5%B8%82+Tsukishiro,+Kakinohana+COSTCO%E5%A5%BD%E5%B8%82%E5%A4%9A+%E6%B2%96%E7%B9%A9%E5%BA%97/@26.1500059,127.7631814,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x34e56f12041e81c3:0xb1f12121b0b040c5!2m2!1d127.755329!2d26.1489297!1m5!1m1!1s0x34e56f002d5171dd:0x6f86b1ebb56a155c!2m2!1d127.7866429!2d26.1552838!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+      { label: "?? google map", url: "https://www.google.com/maps/dir/Okinawasoba-Kintarou,+%E3%81%B5%E3%81%AA%E3%81%93%E3%81%97%E3%82%A2%E3%83%91%E3%83%BC%E3%83%88+Funakoshi-1197+Tamagusuku,+Nanjo,+Okinawa+901-0618%E6%97%A5%E6%9C%AC/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E5%8D%97%E5%9F%8E%E5%B8%82+Tsukishiro,+Kakinohana+COSTCO%E5%A5%BD%E5%B8%82%E5%A4%9A+%E6%B2%96%E7%B9%A9%E5%BA%97/@26.1500059,127.7631814,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x34e56f12041e81c3:0xb1f12121b0b040c5!2m2!1d127.755329!2d26.1489297!1m5!1m1!1s0x34e56f002d5171dd:0x6f86b1ebb56a155c!2m2!1d127.7866429!2d26.1552838!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ]
   },
   {
@@ -659,21 +655,20 @@ const schedule = [
     note: "只能現金或是master card\n不能退稅",
     cost: "",
     link: [
-      { label: "🛍️ 逛街攻略", url: "https://www.funliday.com/posts/okinawa-costco/" },
+      { label: "??? 逛街攻略", url: "https://www.funliday.com/posts/okinawa-costco/" },
     ],
   },
     {
     day: "D3",
     label: "D3 · 1/11",
     time: "18:30–19:30（1小時）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
     note: "COSTCO -> 國際通大和ROYNET酒店\n飯店付費停車場，先到先贏\n星期日 12:00~18:00 國際通步行者天國",
     cost: "",
     link: [
-      { label: "🛏️ 飯店", url: "https://www.daiwaroynet.jp/ct/naha-kokusaidori/" },
-      { label: "🚗 google map", url: "https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E9%82%A3%E9%9C%B8%E5%B8%82+Asato,+2+Chome%E2%88%921+%E9%82%A3%E9%9C%B8%E5%9C%8B%E9%9A%9B%E9%80%9A%E5%A4%A7%E5%92%8CROYNET%E9%A3%AF%E5%BA%97/%E6%97%A5%E6%9C%AC%E3%80%92901-0601+Okinawa,+Nanjo,+Tsukishiro,+COSTCO%E5%A5%BD%E5%B8%82%E5%A4%9A+%E6%B2%96%E7%B9%A9%E5%BA%97+IC%E5%8D%97%E5%9C%9F%E5%9C%B0%E5%8C%BA%E7%94%BB%E6%95%B4%E7%90%86%E4%BA%8B%E6%A5%AD%E5%9C%B0%E5%86%851%E8%A1%97%E5%8C%BA1/@26.1663933,127.7473131,14.29z/data=!4m14!4m13!1m5!1m1!1s0x34e5696484d555e5:0xa8fda093394851cc!2m2!1d127.6936214!2d26.2176311!1m5!1m1!1s0x34e56f002d5171dd:0x6f86b1ebb56a155c!2m2!1d127.7866429!2d26.1552838!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-      { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E9%82%A3%E9%9C%B8%E5%B8%82+Asato,+2+Chome%E2%88%921+%E9%82%A3%E9%9C%B8%E5%9C%8B%E9%9A%9B%E9%80%9A%E5%A4%A7%E5%92%8CROYNET%E9%A3%AF%E5%BA%97/%E6%97%A5%E6%9C%AC%E3%80%92901-0601+Okinawa,+Nanjo,+Tsukishiro,+COSTCO%E5%A5%BD%E5%B8%82%E5%A4%9A+%E6%B2%96%E7%B9%A9%E5%BA%97+IC%E5%8D%97%E5%9C%9F%E5%9C%B0%E5%8C%BA%E7%94%BB%E6%95%B4%E7%90%86%E4%BA%8B%E6%A5%AD%E5%9C%B0%E5%86%851%E8%A1%97%E5%8C%BA1/@26.1663933,127.7473131,14.29z/data=!4m14!4m13!1m5!1m1!1s0x34e5696484d555e5:0xa8fda093394851cc!2m2!1d127.6936214!2d26.2176311!1m5!1m1!1s0x34e56f002d5171dd:0x6f86b1ebb56a155c!2m2!1d127.7866429!2d26.1552838!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+      { label: "??? 飯店", url: "https://www.daiwaroynet.jp/ct/naha-kokusaidori/" },
+      { label: "?? google map", url: "https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E9%82%A3%E9%9C%B8%E5%B8%82+Asato,+2+Chome%E2%88%921+%E9%82%A3%E9%9C%B8%E5%9C%8B%E9%9A%9B%E9%80%9A%E5%A4%A7%E5%92%8CROYNET%E9%A3%AF%E5%BA%97/%E6%97%A5%E6%9C%AC%E3%80%92901-0601+Okinawa,+Nanjo,+Tsukishiro,+COSTCO%E5%A5%BD%E5%B8%82%E5%A4%9A+%E6%B2%96%E7%B9%A9%E5%BA%97+IC%E5%8D%97%E5%9C%9F%E5%9C%B0%E5%8C%BA%E7%94%BB%E6%95%B4%E7%90%86%E4%BA%8B%E6%A5%AD%E5%9C%B0%E5%86%851%E8%A1%97%E5%8C%BA1/@26.1663933,127.7473131,14.29z/data=!4m14!4m13!1m5!1m1!1s0x34e5696484d555e5:0xa8fda093394851cc!2m2!1d127.6936214!2d26.2176311!1m5!1m1!1s0x34e56f002d5171dd:0x6f86b1ebb56a155c!2m2!1d127.7866429!2d26.1552838!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ]
   },
   {
@@ -685,10 +680,10 @@ const schedule = [
     note: "國際通大和ROYNET酒店\n早餐要加購322 NTD/人，兒童免費\nAI推薦 : 花笠食堂 - 家庭式料理\nAI推薦 : 三笠食堂（24 小時) - 在地餐廳",
     cost: "已付 4.227 NTD",
     link: [
-    { label: "🛍️ 逛街攻略1", url: "https://bobbyfun.tw/2024-01-08-2708/" },
-    { label: "🛍️ 逛街攻略2", url: "https://tc.tabirai.net/sightseeing/article/kokusai-street-shopping//" },
-    { label: "🍜 美食推薦1", url: "https://www.youtube.com/watch?v=RyfCLurnJNA/" },
-    { label: "🍜 美食推薦2", url: "https://www.wendyjourney.com/kokusai-dori-food/" },
+    { label: "??? 逛街攻略1", url: "https://bobbyfun.tw/2024-01-08-2708/" },
+    { label: "??? 逛街攻略2", url: "https://tc.tabirai.net/sightseeing/article/kokusai-street-shopping//" },
+    { label: "?? 美食推薦1", url: "https://www.youtube.com/watch?v=RyfCLurnJNA/" },
+    { label: "?? 美食推薦2", url: "https://www.wendyjourney.com/kokusai-dori-food/" },
     ],
   },
   {
@@ -698,20 +693,19 @@ const schedule = [
     title: "早餐 + 飯店check out",
     category: "用餐",
     note: "飯店早餐要加購",
-    cost: "未付 大人 1,980 円\n兒童 免費",    
+    cost: "未付 大人 1,980 ?\n兒童 免費",    
     link: "",
   },
   {
     day: "D4",
     label: "D4 · 1/12",
     time: "09:30–09:45（15分）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
     note: "飯店 > 波上宮",
     cost: "",
     link: [
-    { label: "🚗 google map", url: "https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E9%82%A3%E9%9C%B8%E5%B8%82+Asato,+2+Chome%E2%88%921+%E9%82%A3%E9%9C%B8%E5%9C%8B%E9%9A%9B%E9%80%9A%E5%A4%A7%E5%92%8CROYNET%E9%A3%AF%E5%BA%97/%E6%97%A5%E6%9C%AC%E3%80%92901-0601+Okinawa,+Nanjo,+Tsukishiro,+COSTCO%E5%A5%BD%E5%B8%82%E5%A4%9A+%E6%B2%96%E7%B9%A9%E5%BA%97+IC%E5%8D%97%E5%9C%9F%E5%9C%B0%E5%8C%BA%E7%94%BB%E6%95%B4%E7%90%86%E4%BA%8B%E6%A5%AD%E5%9C%B0%E5%86%851%E8%A1%97%E5%8C%BA1/@26.1663933,127.7473131,14.29z/data=!4m14!4m13!1m5!1m1!1s0x34e5696484d555e5:0xa8fda093394851cc!2m2!1d127.6936214!2d26.2176311!1m5!1m1!1s0x34e56f002d5171dd:0x6f86b1ebb56a155c!2m2!1d127.7866429!2d26.1552838!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-    { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E9%82%A3%E9%9C%B8%E5%B8%82+Asato,+2+Chome%E2%88%921+%E9%82%A3%E9%9C%B8%E5%9C%8B%E9%9A%9B%E9%80%9A%E5%A4%A7%E5%92%8CROYNET%E9%A3%AF%E5%BA%97/%E6%97%A5%E6%9C%AC%E3%80%92901-0601+Okinawa,+Nanjo,+Tsukishiro,+COSTCO%E5%A5%BD%E5%B8%82%E5%A4%9A+%E6%B2%96%E7%B9%A9%E5%BA%97+IC%E5%8D%97%E5%9C%9F%E5%9C%B0%E5%8C%BA%E7%94%BB%E6%95%B4%E7%90%86%E4%BA%8B%E6%A5%AD%E5%9C%B0%E5%86%851%E8%A1%97%E5%8C%BA1/@26.1663933,127.7473131,14.29z/data=!4m14!4m13!1m5!1m1!1s0x34e5696484d555e5:0xa8fda093394851cc!2m2!1d127.6936214!2d26.2176311!1m5!1m1!1s0x34e56f002d5171dd:0x6f86b1ebb56a155c!2m2!1d127.7866429!2d26.1552838!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+    { label: "?? google map", url: "https://www.google.com/maps/dir/%E6%97%A5%E6%9C%AC%E6%B2%96%E7%B9%A9%E7%B8%A3%E9%82%A3%E9%9C%B8%E5%B8%82+Asato,+2+Chome%E2%88%921+%E9%82%A3%E9%9C%B8%E5%9C%8B%E9%9A%9B%E9%80%9A%E5%A4%A7%E5%92%8CROYNET%E9%A3%AF%E5%BA%97/%E6%97%A5%E6%9C%AC%E3%80%92901-0601+Okinawa,+Nanjo,+Tsukishiro,+COSTCO%E5%A5%BD%E5%B8%82%E5%A4%9A+%E6%B2%96%E7%B9%A9%E5%BA%97+IC%E5%8D%97%E5%9C%9F%E5%9C%B0%E5%8C%BA%E7%94%BB%E6%95%B4%E7%90%86%E4%BA%8B%E6%A5%AD%E5%9C%B0%E5%86%851%E8%A1%97%E5%8C%BA1/@26.1663933,127.7473131,14.29z/data=!4m14!4m13!1m5!1m1!1s0x34e5696484d555e5:0xa8fda093394851cc!2m2!1d127.6936214!2d26.2176311!1m5!1m1!1s0x34e56f002d5171dd:0x6f86b1ebb56a155c!2m2!1d127.7866429!2d26.1552838!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ],
   },
   {
@@ -728,13 +722,12 @@ const schedule = [
     day: "D4",
     label: "D4 · 1/12",
     time: "10:45–11:00（15分）",
-    title: "⬇️",
+    title: "??",
     category: "交通",
     note: "波上宮 > 那霸港 (海上觀光船Orca號)",
     cost: "",
-      link: [
-    { label: "🚗 google map", url: "https://www.google.com/maps/dir/Naminouegusanpaishasenyo+Parking+Lot,+1+Chome-25-10+Wakasa,+Naha,+Okinawa+900-0031%E6%97%A5%E6%9C%AC/Naha+Port+Parking+Lot,+3-2-1+Tondocho,+Naha,+Okinawa+900-0035%E6%97%A5%E6%9C%AC/@26.2156047,127.6652209,16z/data=!3m2!4b1!5s0x34e5696490700691:0x765739d498290581!4m14!4m13!1m5!1m1!1s0x34e569006a4d5495:0xb1be8b57693545a5!2m2!1d127.6712424!2d26.220213!1m5!1m1!1s0x34e56976c5e233f5:0x44e7ba90416bdbc0!2m2!1d127.6703948!2d26.2109788!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-    { label: "🚀 直接導航", url: "https://www.google.com/maps/dir/Naminouegusanpaishasenyo+Parking+Lot,+1+Chome-25-10+Wakasa,+Naha,+Okinawa+900-0031%E6%97%A5%E6%9C%AC/Naha+Port+Parking+Lot,+3-2-1+Tondocho,+Naha,+Okinawa+900-0035%E6%97%A5%E6%9C%AC/@26.2156047,127.6652209,16z/data=!3m2!4b1!5s0x34e5696490700691:0x765739d498290581!4m14!4m13!1m5!1m1!1s0x34e569006a4d5495:0xb1be8b57693545a5!2m2!1d127.6712424!2d26.220213!1m5!1m1!1s0x34e56976c5e233f5:0x44e7ba90416bdbc0!2m2!1d127.6703948!2d26.2109788!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+     link: [
+    { label: "?? google map", url: "https://www.google.com/maps/dir/Naminouegusanpaishasenyo+Parking+Lot,+1+Chome-25-10+Wakasa,+Naha,+Okinawa+900-0031%E6%97%A5%E6%9C%AC/Naha+Port+Parking+Lot,+3-2-1+Tondocho,+Naha,+Okinawa+900-0035%E6%97%A5%E6%9C%AC/@26.2156047,127.6652209,16z/data=!3m2!4b1!5s0x34e5696490700691:0x765739d498290581!4m14!4m13!1m5!1m1!1s0x34e569006a4d5495:0xb1be8b57693545a5!2m2!1d127.6712424!2d26.220213!1m5!1m1!1s0x34e56976c5e233f5:0x44e7ba90416bdbc0!2m2!1d127.6703948!2d26.2109788!3e0?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
     ],
   },
   {
@@ -746,8 +739,8 @@ const schedule = [
     note: "11:30 觀光船\n尚未預約",
     cost: "不含餐 : 大人 2,200, 小孩免費 \n 含餐 : 大人 4,500, 小孩 500",
     link: [
-    { label: "🛍️ 景點介紹", url: "https://fullfenblog.tw/glass-bottom-boat/" },
-    { label: "🍜 預約網站", url: "https://tw.westmarine.co.jp/orca_lunch.php" },
+    { label: "??? 景點介紹", url: "https://fullfenblog.tw/glass-bottom-boat/" },
+    { label: "?? 預約網站", url: "https://tw.westmarine.co.jp/orca_lunch.php" },
     ],
   },
   {
@@ -756,18 +749,18 @@ const schedule = [
     time: "12:30–13:45（1小時15分）",
     title: "午餐 + 租車公司還車",
     category: "用餐",
-    note: "還車前要加滿油\n選擇一 : 觀光船海鮮丼吃到飽方案(小孩是套餐)\n選擇二 : Nakazaya なかざ家沖繩麵(租車公司步行4分鐘，行李寄放租車公司?)\n選擇三 : 機場美食",
+    note: "還車前要加滿油\n選擇一 : 觀光船海鮮丼吃到飽方案(小孩是套餐)\n選擇二 : Nakazaya ???家沖繩麵(租車公司步行4分鐘，行李寄放租車公司?)\n選擇三 : 機場美食",
     link: [
-    { label: "⛽ 加油站", url: "https://www.google.com/maps/place/apollostation+Oroku+Kinjo+SS/@26.201515,127.6616106,18.25z/data=!4m10!1m2!2m1!1z5Yqg5rK556uZ!3m6!1s0x34e569b79ed74589:0xae0f20014db85b03!8m2!3d26.2018544!4d127.6622261!15sCgnliqDmsrnnq5laDCIK5Yqg5rK5IOermZIBC2dhc19zdGF0aW9umgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU4yT0dGNVkxaDNFQUXgAQD6AQUIogEQIg!16s%2Fg%2F1tfm4dr8?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
-    { label: "🍜 Nakazaya ", url: "https://slowlifeinokinawa.com/okifood-nakazaya/" },
-    { label: "🥩 機場美食 ", url: "https://www.naha-airport.co.jp/zh-hant/spend/shop_and_restaurant/search/?type=%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3&category=&type_airport=%E5%9B%BD%E9%9A%9B%E7%B7%9A&floor=" },  
+    { label: "? 加油站", url: "https://www.google.com/maps/place/apollostation+Oroku+Kinjo+SS/@26.201515,127.6616106,18.25z/data=!4m10!1m2!2m1!1z5Yqg5rK556uZ!3m6!1s0x34e569b79ed74589:0xae0f20014db85b03!8m2!3d26.2018544!4d127.6622261!15sCgnliqDmsrnnq5laDCIK5Yqg5rK5IOermZIBC2dhc19zdGF0aW9umgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU4yT0dGNVkxaDNFQUXgAQD6AQUIogEQIg!16s%2Fg%2F1tfm4dr8?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D/" },
+    { label: "?? Nakazaya ", url: "https://slowlifeinokinawa.com/okifood-nakazaya/" },
+    { label: "?? 機場美食 ", url: "https://www.naha-airport.co.jp/zh-hant/spend/shop_and_restaurant/search/?type=%E3%83%AC%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3&category=&type_airport=%E5%9B%BD%E9%9A%9B%E7%B7%9A&floor=" },  
     ],
   },
   {
     day: "D4",
     label: "D4 · 1/12",
     time: "13:45–14:15（30分）",
-    title: "租車公司➡️機場",
+    title: "租車公司??機場",
     category: "交通",
     note: "還車+接駁到機場",
     cost: "",
@@ -787,7 +780,7 @@ const schedule = [
     day: "D4",
     label: "D4 · 1/12",
     time: "16:55–17:35（40分鐘 時差1小時）",
-    title: "那霸機場➡️桃機T1",
+    title: "那霸機場??桃機T1",
     category: "交通",
     note: "AirAsia FD231\n手提7kg*3 託運20kg*3",
     cost: "",
@@ -797,7 +790,7 @@ const schedule = [
     day: "info",
     label: "info",
     time: "",
-    title: "🛃入境審查",
+    title: "??入境審查",
     category: "",
     note: "外國旅客可使用「預先入關」制度，需事先完成VJW登入",
     cost: "",
@@ -809,7 +802,7 @@ const schedule = [
     day: "info",
     label: "info",
     time: "",
-    title: "🎁伴手禮",
+    title: "??伴手禮",
     category: "",
     note: "那霸機場「國內線」的2樓為購物樓層，網羅了種類豐富的沖繩名產",
     cost: "",
@@ -822,7 +815,7 @@ const schedule = [
     day: "info",
     label: "info",
     time: "",
-    title: "🎟️COUPON",
+    title: "???COUPON",
     category: "",
     note: "AEON, Bic Camera, 唐吉軻德, 松本清, 大國藥妝, sundrug ",
     cost: "",
@@ -837,7 +830,7 @@ const schedule = [
     day: "info",
     label: "info",
     time: "",
-    title: "⭐Plan B",
+    title: "?Plan B",
     category: "",
     note: "D1 : 租車公司 -> 東南植物樂園 -> 飯店\nD2 : 飯店 -> 沖繩兒童王國 -> AEON 夢樂城午餐 -> 美國村->晚餐\nD3 : 飯店 -> 中城公園 -> 午餐:Okinawasoba-Kintarou -> 玉泉洞 -> costco -> 國際通",
     cost: "",
@@ -868,11 +861,11 @@ function guessIcon(url) {
     const u = new URL(url);
     const host = u.hostname.replace(/^www\./, "").toLowerCase();
     const full = (host + (u.pathname || "")).toLowerCase();
-    if (full.includes("google.com/maps") || full.includes("maps.app.goo.gl") || host.includes("maps")) return "📍";
-    if (full.includes("booking") || full.includes("ticket") || full.includes("reserve") || full.includes("trip.com") || full.includes("klook") || full.includes("kkday")) return "🎟️";
-    return "🌐";
+    if (full.includes("google.com/maps") || full.includes("maps.app.goo.gl") || host.includes("maps")) return "??";
+    if (full.includes("booking") || full.includes("ticket") || full.includes("reserve") || full.includes("trip.com") || full.includes("klook") || full.includes("kkday")) return "???";
+    return "??";
   } catch (e) {
-    return "🌐";
+    return "??";
   }
 }
 
@@ -922,7 +915,7 @@ const dayTitleEl = document.getElementById("dayTitle");
 
 let currentDay = days[0] || "D1";
 
-// ===== ✅ Check list（info 頁，可勾選並保存） =====
+// ===== ? Check list（info 頁，可勾選並保存） =====
 const CHECKLIST_STORAGE_KEY = "riceball_packing_checklist_v1";
 
 // 你可以在這裡調整預設清單
@@ -1044,11 +1037,11 @@ panel.innerHTML = `
 
     <div class="card-header" id="checklistHeader" style="cursor:pointer;">
       <div>
-        <div class="title">✅ CHECK LIST</div>
+        <div class="title">? CHECK LIST</div>
       </div>
       <div class="right-top">
         
-        <div class="chev" id="checklistArrow">▾</div>
+        <div class="chev" id="checklistArrow">?</div>
       </div>
     </div>
 
@@ -1080,10 +1073,10 @@ function updateChecklistCollapse() {
   if (!packingCard) return;
   if (checklistOpen) {
     packingCard.classList.remove("collapsed");
-    if (checklistArrow) checklistArrow.textContent = "▾";
+    if (checklistArrow) checklistArrow.textContent = "?";
   } else {
     packingCard.classList.add("collapsed");
-    if (checklistArrow) checklistArrow.textContent = "▸";
+    if (checklistArrow) checklistArrow.textContent = "?";
   }
 }
   if (checklistHeader) {
@@ -1238,7 +1231,7 @@ function renderCards() {
 
     const chev = document.createElement("div");
     chev.className = "chev";
-    chev.textContent = "▾";
+    chev.textContent = "?";
 
     right.appendChild(chip);
     right.appendChild(chev);
@@ -1318,7 +1311,7 @@ btn.addEventListener("click", (e) => {
 renderDayTabs();
 renderCards();
 
-// ===== ✅ 這裡開始是「新增/更新」的 PWA 安裝邏輯 =====
+// ===== ? 這裡開始是「新增/更新」的 PWA 安裝邏輯 =====
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("service-worker.js").catch(() => {});
@@ -1363,7 +1356,6 @@ if (isStandalone && installBtn) installBtn.hidden = true;
   </script>
 </body>
 </html>
-
 
 
 
