@@ -326,6 +326,16 @@
 .info-page .timeline::before{ display: none; }
 .info-page .dot{ display: none; }
 
+.schedule-page .timeline { margin-left: 0; padding-left: 0; }
+.schedule-page .timeline::before { display: none; }
+
+.schedule-img {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+}
+    
   </style>
 </head>
 <body>
@@ -346,7 +356,9 @@
       <div class="day-tabs" id="dayTabs"></div>
     </div>
 
-    <main id="mainContent" class="info-page">
+    <main id="mainContent">
+
+      
       <div class="day-title" id="dayTitle"></div>
       <div class="checklist-panel" id="checklistPanel" style="display:none;"></div>
       <div class="timeline" id="cardContainer"></div>
@@ -366,6 +378,17 @@
  */
     let currentPlan = "A";
 const schedule = [
+  {
+  day: "schedule",
+  label: "schedule",
+  time: "",
+  title: "📅 行程表",
+  category: "",
+  note: "",
+  cost: "",
+  link: "",
+},
+  
   {
     day: "D1",
     label: "D1 · 1/9",
@@ -1493,6 +1516,24 @@ function renderCards() {
   const date = parts[1] || "";
   dayTitleEl.innerHTML = d + " <span>" + date + "</span>";
 
+
+  // ✅ 切換頁面 class（info / schedule）
+  const mainEl = document.getElementById("mainContent");
+  if (mainEl) {
+    mainEl.classList.toggle("info-page", currentDay === "info");
+    mainEl.classList.toggle("schedule-page", currentDay === "schedule");
+  }
+
+  // ✅ schedule 頁：直接顯示圖片（不走卡片）
+  if (currentDay === "schedule") {
+    emptyState.style.display = "none";
+    cardContainer.innerHTML = `
+      <img class="schedule-img" src="Gemini_Generated_Image_8y2v7p8y2v7p8y2v.png" alt="行程表" />
+    `;
+    return;
+  }
+
+  
   if (!items.length) {
     emptyState.style.display = "block";
     return;
@@ -1668,6 +1709,7 @@ function togglePlan() {
   </script>
 </body>
 </html>
+
 
 
 
