@@ -388,7 +388,36 @@ const schedule = [
   cost: "",
   link: "",
 },
-  
+     {
+    day: "D1",
+    label: "D1 · 1/9",
+    time: "09:30–10:20（50分）",
+    title: "家➡️機場外圍停車",
+    category: "交通",
+    note: "連統停車\n洗車+打蠟 1200",
+    cost: "",
+    link: [ { label: "連統出國停車場(連勝二場)", url: "https://www.google.com/maps/dir/?api=1&destination=連勝停車場(連統場)" },],
+  }, 
+   {
+    day: "D1",
+    label: "D1 · 1/9",
+    time: "10:20–10:50（30分）",
+    title: "機場外圍停車➡️桃機T1",
+    category: "",
+    note: "",
+    cost: "",
+    link: "",
+  },  
+  {
+    day: "D1",
+    label: "D1 · 1/9",
+    time: "10:50–13:25（2小時35分）",
+    title: "桃機T1",
+    category: "用餐",
+    note: "",
+    cost: "",
+    link: "",
+  },  
   {
     day: "D1",
     label: "D1 · 1/9",
@@ -1157,6 +1186,24 @@ link: [
     { label: "燒肉", url: "https://drive.google.com/file/d/13mSXp_rfzJm2mDKUCsMXk_zEBVyMCGrG/view?usp=drive_link" },
     ],
   },
+
+   {
+    day: "info",
+    label: "ℹ️",
+    time: "",
+    title: " 🚘 機場外圍停車",
+    category: "",
+    note: "",
+    cost: "",
+    link: [
+    { label: "大園第二停車場", url: "https://www.google.com/maps/dir/?api=1&destination=大園出國停車場｜第二停車場" },
+    { label: "大園第三停車場", url: "https://www.google.com/maps/dir/?api=1&destination=大園出國停車場｜第三停車場" }, 
+    { label: "連勝出國停車場", url: "https://www.google.com/maps/dir/?api=1&destination=連勝出國停車場" },
+    { label: "連統出國停車場(連勝二場)", url: "https://www.google.com/maps/dir/?api=1&destination=連勝停車場(連統場)" },
+    { label: "日月亭平安停車場", url:  "https://www.google.com/maps/dir/?api=1&destination=日月亭停車場"},
+      
+    ],
+  },
   ]
 // ===== 下面這段是你原本的 UI 程式碼（保留） =====
 function normalizeUrl(raw) {
@@ -1709,6 +1756,7 @@ function togglePlan() {
   </script>
 </body>
 </html>
+
 
 
 
